@@ -1,0 +1,35 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}SmartPhone Details | Mahakal Telecom Mankapur{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px;">
+    
+    <!-- Breadcrumbs navigation -->
+    <nav style="margin-bottom: 24px; font-size: 0.85rem; color: var(--text-secondary);" aria-label="Breadcrumbs">
+      <a href="index.html" style="color: var(--text-muted);">Home</a>
+      <span style="margin: 0 8px; color: var(--text-muted);">/</span>
+      <a href="mobiles.html" style="color: var(--text-muted);">Mobiles</a>
+      <span style="margin: 0 8px; color: var(--text-muted);">/</span>
+      <span style="color: var(--text-primary);">Device details</span>
+    </nav>
+
+    <!-- Target container loaded dynamically by js/main.js -->
+    <div id="product-detail-container">
+      
+      <!-- Skeleton Placeholder while loading -->
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+        <div class="skeleton" style="height: 400px; border-radius: var(--radius-lg);"></div>
+        <div style="display: flex; flex-direction: column; gap: 20px;">
+          <div class="skeleton" style="height: 30px; width: 40%;"></div>
+          <div class="skeleton" style="height: 50px; width: 80%;"></div>
+          <div class="skeleton" style="height: 100px; width: 100%;"></div>
+          <div class="skeleton" style="height: 50px; width: 60%;"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+{% endblock %}

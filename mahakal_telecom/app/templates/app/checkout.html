@@ -1,0 +1,121 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Secure Checkout - Mahakal Telecom Mankapur{% endblock %}
+{% block meta_description %}Secure demo checkout page for Mahakal Telecom Mankapur. Fill details to complete pre-owned smartphone demo orders.{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px;">
+    
+    <div style="margin-bottom: 40px; border-left: 3px solid var(--accent-gold); padding-left: 16px;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-title);">Secure Checkout</h1>
+      <p style="color: var(--text-secondary); margin-top: 6px;">Secure demo checkout. Fill delivery details to complete demo order.</p>
+    </div>
+
+    <!-- Main Checkout container -->
+    <div style="display: grid; grid-template-columns: 2fr 1.2fr; gap: 40px; align-items: start;" class="grid-2">
+      
+      <!-- Left column: customer details form -->
+      <form id="checkout-demo-form" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; display: flex; flex-direction: column; gap: 24px;">
+        
+        <div>
+          <h3 style="font-size: 1.15rem; font-family: var(--font-title); border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">1. Contact Information</h3>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="grid-2">
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <label for="customer-name" style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">Full Name *</label>
+              <input type="text" id="customer-name" required placeholder="e.g. Kunal Kasaudhan" style="background-color:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:10px 14px; outline:none; color:var(--text-primary);" class="hover-glow-gold">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <label for="customer-phone" style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">Mobile Number *</label>
+              <input type="tel" id="customer-phone" required placeholder="e.g. 95653-91070" style="background-color:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:10px 14px; outline:none; color:var(--text-primary);" class="hover-glow-gold">
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.15rem; font-family: var(--font-title); border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">2. Shipping / Delivery Address</h3>
+          
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:flex; flex-direction:column; gap:8px;">
+              <label for="customer-address" style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">Street Address *</label>
+              <input type="text" id="customer-address" required placeholder="Apartment, building, near landmarks" style="background-color:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:10px 14px; outline:none; color:var(--text-primary);" class="hover-glow-gold">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;" class="grid-2">
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <label for="customer-city" style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">City / Town *</label>
+                <input type="text" id="customer-city" required placeholder="Mankapur or Gonda" style="background-color:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:10px 14px; outline:none; color:var(--text-primary);" class="hover-glow-gold">
+              </div>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <label for="customer-state" style="font-size:0.82rem; font-weight:600; color:var(--text-secondary);">State *</label>
+                <input type="text" id="customer-state" required placeholder="Uttar Pradesh" style="background-color:var(--bg-tertiary); border:1px solid var(--border-color); border-radius:var(--radius-sm); padding:10px 14px; outline:none; color:var(--text-primary);" class="hover-glow-gold">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.15rem; font-family: var(--font-title); border-bottom: 1px solid var(--border-color); padding-bottom: 12px; margin-bottom: 20px;">3. Payment Method</h3>
+          
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <label style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color); background-color: var(--bg-tertiary); padding: 16px; border-radius: var(--radius-md); cursor: pointer;" class="hover-glow-gold">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="radio" name="payment_method" value="cod" checked style="accent-color: var(--accent-gold);">
+                <div>
+                  <span style="font-weight: 600; display: block;">Cash On Delivery (COD)</span>
+                  <span style="font-size: 0.75rem; color: var(--text-secondary);">Pay at your doorstep or upon shop pickup.</span>
+                </div>
+              </div>
+              <span style="font-size: 0.65rem; font-weight: 700; color: var(--success-green); background-color: rgba(46, 204, 113, 0.1); padding: 2px 6px; border-radius: var(--radius-sm);">ACTIVE</span>
+            </label>
+
+            <label style="display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border-color); background-color: var(--bg-tertiary); padding: 16px; border-radius: var(--radius-md); cursor: not-allowed; opacity: 0.6;">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <input type="radio" name="payment_method" value="online" disabled style="accent-color: var(--accent-gold);">
+                <div>
+                  <span style="font-weight: 600; display: block; color: var(--text-muted);">Online Payment (Razorpay / UPI)</span>
+                  <span style="font-size: 0.75rem; color: var(--text-muted);">Pay securely using credit cards, netbanking or UPI.</span>
+                </div>
+              </div>
+              <span style="font-size: 0.65rem; font-weight: 700; color: var(--accent-gold); background-color: var(--accent-gold-glow); padding: 2px 6px; border-radius: var(--radius-sm);">COMING SOON</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-full" style="margin-top: 10px;">Place Demo Order</button>
+      </form>
+
+      <!-- Right column: summary sidebar widget -->
+      <aside style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 30px; display: flex; flex-direction: column; gap: 24px;" aria-label="Order Summary">
+        <h3 style="font-size: 1.15rem; font-family: var(--font-title); border-bottom: 1px solid var(--border-color); padding-bottom: 12px;">Order Summary</h3>
+        
+        <!-- Target dynamic items list (Bootstrapped by main.js) -->
+        <div id="checkout-items-summary-list">
+          <div class="skeleton" style="height: 60px;"></div>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+          <div class="flex-between">
+            <span style="color: var(--text-secondary);">Subtotal</span>
+            <span id="chk-subtotal-val" style="font-weight: 500;">₹0</span>
+          </div>
+          <div class="flex-between">
+            <span style="color: var(--text-secondary);">Shipping</span>
+            <span style="color: var(--success-green); font-weight: 600;">FREE</span>
+          </div>
+        </div>
+
+        <div class="flex-between" style="font-weight: 700;">
+          <span>Total</span>
+          <span id="chk-total-val" style="font-family: var(--font-title); font-size: 1.35rem; color: var(--accent-gold);">₹0</span>
+        </div>
+
+        <div style="font-size: 0.72rem; color: var(--text-muted); text-align: center; border-top: 1px dashed var(--border-color); padding-top: 16px;">
+          ⚠️ This is a visual checkout demonstration. No payments will be processed.
+        </div>
+      </aside>
+
+    </div>
+  </main>
+{% endblock %}

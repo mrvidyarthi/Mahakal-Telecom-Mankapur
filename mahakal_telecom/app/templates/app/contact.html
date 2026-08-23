@@ -1,0 +1,117 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Contact & Directions - Mahakal Telecom Mankapur{% endblock %}
+{% block meta_description %}Get in touch with Mahakal Telecom Mankapur. View address details, phone contacts, open hours, and get routing maps for our physical store in Gonda.{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px;">
+    
+    <div style="margin-bottom: 50px; border-left: 3px solid var(--accent-gold); padding-left: 16px;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-title);">Contact & Visit Us</h1>
+      <p style="color: var(--text-secondary); margin-top: 6px;">Get in touch with the store manager or find routes to visit us in Mankapur.</p>
+    </div>
+
+    <!-- Contact details grid -->
+    <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px;" class="grid-2">
+      
+      <!-- Left side: address list & text -->
+      <div style="display: flex; flex-direction: column; gap: 30px;">
+        
+        <div>
+          <h2 style="font-size: 1.5rem; margin-bottom: 16px; font-family: var(--font-title);">Store Location Details</h2>
+          <p style="font-size: 0.95rem; line-height: 1.7; color: var(--text-secondary); margin-bottom: 20px;">
+            We are located in Mankapur town in Gonda district, Uttar Pradesh. If you are coming from Gonda or nearby local stations, we are easily reachable via the main station route. Walk in to try any device in person.
+          </p>
+
+          <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 24px; display: flex; flex-direction: column; gap: 16px;">
+            <div style="display: flex; gap: 12px; font-size: 0.95rem;">
+              <span style="color: var(--accent-gold); font-size: 1.2rem;">📍</span>
+              <div>
+                <span style="font-weight: 600; display: block; color: var(--text-primary);">Mahakal Telecom Mankapur</span>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">Near Railway Station, Gonda Road, Mankapur, Gonda, Uttar Pradesh, 271302</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 16px;">
+              <span style="color: var(--accent-gold); font-size: 1.2rem;">📞</span>
+              <div>
+                <span style="font-weight: 600; display: block; color: var(--text-primary);">Calling Contact</span>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">+91 95653-91070 / +91 93054-71860</span>
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 12px; font-size: 0.95rem; border-top: 1px solid rgba(255,255,255,0.03); padding-top: 16px;">
+              <span style="color: var(--accent-gold); font-size: 1.2rem;">🕒</span>
+              <div>
+                <span style="font-weight: 600; display: block; color: var(--text-primary);">Business Hours</span>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">09:30 AM - 09:00 PM (Open all 7 days)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.15rem; margin-bottom: 12px; font-family: var(--font-title);">Instant Actions</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="tel:+919565391070" class="btn btn-secondary">Call Manager Now</a>
+            <a href="https://wa.me/919565391070" target="_blank" class="btn btn-whatsapp">WhatsApp Chat</a>
+            <a href="https://maps.google.com" target="_blank" class="btn btn-primary">Get Directions</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right side: Premium custom styled offline SVG map of Mankapur route -->
+      <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); aspect-ratio: 1/1; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
+        <!-- Pulsing glowing gold circle on target pin location -->
+        <div style="position: absolute; top: 40%; left: 60%; width: 20px; height: 20px; border-radius: 50%; background-color: var(--accent-gold); z-index: 10;" class="animate-pulse-gold"></div>
+
+        <!-- Custom Offline Map Vector Design -->
+        <svg viewBox="0 0 400 400" width="100%" height="100%">
+          <defs>
+            <linearGradient id="map-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="%230f0f13"/>
+              <stop offset="100%" stop-color="%2309090b"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(%23map-bg)"/>
+          
+          <!-- Grid lines for map pattern -->
+          <line x1="50" y1="0" x2="50" y2="400" stroke="%2327272a" stroke-width="0.5" opacity="0.3"/>
+          <line x1="150" y1="0" x2="150" y2="400" stroke="%2327272a" stroke-width="0.5" opacity="0.3"/>
+          <line x1="250" y1="0" x2="250" y2="400" stroke="%2327272a" stroke-width="0.5" opacity="0.3"/>
+          <line x1="350" y1="0" x2="350" y2="400" stroke="%2327272a" stroke-width="0.5" opacity="0.3"/>
+          <line x1="0" y1="100" x2="400" y2="100" stroke="%2327272a" stroke-width="0.5" opacity="0.3"/>
+          <line x1="0" y1="200" x2="400" y2="200" stroke="%2327272a" stroke-width="0.5" opacity="0.3"/>
+          <line x1="0" y1="300" x2="400" y2="300" stroke="%2327272a" stroke-width="0.5" opacity="0.3"/>
+
+          <!-- Mankapur Gonda Main Road -->
+          <path d="M -50 180 Q 200 160 450 200" fill="none" stroke="%2327272a" stroke-width="20" stroke-linecap="round"/>
+          <path d="M -50 180 Q 200 160 450 200" fill="none" stroke="%2318181b" stroke-width="16" stroke-linecap="round"/>
+          <text x="50" y="165" fill="%2371717a" font-family="system-ui" font-size="8" font-weight="700">GONDA ROAD</text>
+
+          <!-- Railway line -->
+          <path d="M -50 300 H 450" fill="none" stroke="%2327272a" stroke-width="4" stroke-dasharray="8, 6"/>
+          <text x="310" y="290" fill="%2371717a" font-family="system-ui" font-size="8" font-weight="700" letter-spacing="1">RAILWAY LINE</text>
+          
+          <!-- Secondary Road to Railway station -->
+          <path d="M 240 170 V 350" fill="none" stroke="%2327272a" stroke-width="12"/>
+          <path d="M 240 170 V 350" fill="none" stroke="%2318181b" stroke-width="8"/>
+          <text x="250" y="250" fill="%2371717a" font-family="system-ui" font-size="8" font-weight="700" transform="rotate(90 250 250)">STATION ROAD</text>
+
+          <!-- Pin overlay label -->
+          <g transform="translate(190, 110)">
+            <rect x="0" y="0" width="105" height="30" rx="6" ry="6" fill="%2309090b" stroke="%23d4af37" stroke-width="1"/>
+            <text x="52" y="18" fill="%23ffffff" font-family="Outfit" font-size="8" font-weight="800" text-anchor="middle" letter-spacing="0.5">MAHAKAL TELECOM</text>
+          </g>
+          <path d="M 240 140 L 240 160" fill="none" stroke="%23d4af37" stroke-width="1.5"/>
+          <circle cx="240" cy="160" r="4" fill="%23d4af37"/>
+
+        </svg>
+      </div>
+
+    </div>
+
+  </main>
+{% endblock %}

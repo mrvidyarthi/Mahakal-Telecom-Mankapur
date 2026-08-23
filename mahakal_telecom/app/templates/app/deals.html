@@ -1,0 +1,24 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Today's Best Smartphone Deals | Mahakal Telecom Mankapur{% endblock %}
+{% block meta_description %}Shop discounted second hand and pre-owned smartphones in Mankapur, Gonda. High discount premium devices available at cut-down prices.{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px;">
+    
+    <div style="margin-bottom: 40px; border-left: 3px solid var(--accent-gold); padding-left: 16px;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-title);" id="specialty-page-title">Today's Best Deals</h1>
+      <p style="color: var(--text-secondary); margin-top: 6px;" id="specialty-page-desc">High discount premium smartphones, available at special cut-prices.</p>
+    </div>
+
+    <!-- Loaded dynamically by js/main.js -->
+    <div id="specialty-grid-container" class="grid-4 mobile-grid-2">
+      <div class="skeleton" style="height: 380px;"></div>
+      <div class="skeleton" style="height: 380px;"></div>
+      <div class="skeleton" style="height: 380px;"></div>
+      <div class="skeleton" style="height: 380px;"></div>
+    </div>
+
+  </main>
+{% endblock %}

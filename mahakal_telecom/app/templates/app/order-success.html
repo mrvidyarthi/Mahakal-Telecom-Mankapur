@@ -1,0 +1,98 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Order Confirmed - Mahakal Telecom Mankapur{% endblock %}
+{% block meta_description %}Order successfully placed demo confirmation at Mahakal Telecom Mankapur, Gonda.{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px; max-width: 700px;">
+    
+    <!-- Success visual panel header -->
+    <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 40px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 20px;">
+      
+      <!-- Success Icon badge -->
+      <div style="width: 72px; height: 72px; border-radius: 50%; background-color: rgba(46, 204, 113, 0.1); border: 2px solid var(--success-green); color: var(--success-green); font-size: 2.25rem; font-weight: 800; display: flex; align-items: center; justify-content: center;">
+        ✓
+      </div>
+
+      <h1 style="font-size: 2rem; font-weight: 800; font-family: var(--font-title);">ORDER DEMO CREATED</h1>
+      <p style="color: var(--text-secondary); max-width: 440px; font-size: 0.95rem; margin-top: -6px;">
+        Thank you for testing the Mahakal Telecom storefront! This is a **frontend demonstration** showing checkout compatibility.
+      </p>
+
+      <div style="background-color: var(--bg-tertiary); border: 1px dashed var(--border-color); border-radius: var(--radius-md); padding: 12px 24px; font-family: var(--font-title); font-size: 1.1rem; font-weight: 700; color: var(--accent-gold); letter-spacing: 0.05em; display: inline-block;">
+        Order ID: <span id="success-order-id">#MT-DEMO-1025</span>
+      </div>
+
+      <!-- Tracking Timeline -->
+      <div style="width: 100%; border-top: 1px solid var(--border-color); padding-top: 30px; margin-top: 10px;">
+        <h3 style="font-size: 1rem; font-family: var(--font-title); text-align: left; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 0.05em;">Order Tracking Status</h3>
+        
+        <div style="display: flex; justify-content: space-between; position: relative;">
+          <!-- Connecting Line -->
+          <div style="position: absolute; top: 12px; left: 30px; right: 30px; height: 2px; background-color: var(--border-color); z-index: 1;"></div>
+          <!-- Completed connecting line -->
+          <div style="position: absolute; top: 12px; left: 30px; width: 33%; height: 2px; background-color: var(--success-green); z-index: 2;"></div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3; flex: 1;">
+            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--success-green); color: #000; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(46,204,113,0.3);">✓</div>
+            <span style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary);">Placed</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3; flex: 1;">
+            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--success-green); color: #000; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(46,204,113,0.3);">✓</div>
+            <span style="font-size: 0.78rem; font-weight: 600; color: var(--text-primary);">Checked</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3; flex: 1;">
+            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--bg-tertiary); border: 2px solid var(--border-color); color: var(--text-muted); font-size: 0.72rem; display: flex; align-items: center; justify-content: center;">3</div>
+            <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-secondary);">Packed</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 8px; z-index: 3; flex: 1;">
+            <div style="width: 24px; height: 24px; border-radius: 50%; background-color: var(--bg-tertiary); border: 2px solid var(--border-color); color: var(--text-muted); font-size: 0.72rem; display: flex; align-items: center; justify-content: center;">4</div>
+            <span style="font-size: 0.78rem; font-weight: 500; color: var(--text-secondary);">Shipped</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Receipt Breakdown lists -->
+      <div style="width: 100%; border-top: 1px solid var(--border-color); padding-top: 30px; margin-top: 20px; text-align: left; display: flex; flex-direction: column; gap: 16px;">
+        <h3 style="font-size: 1rem; font-family: var(--font-title); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 8px;">Order Details</h3>
+        
+        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+          <span style="color: var(--text-muted);">Customer Name</span>
+          <span id="success-customer-name" style="font-weight: 600;">Kunal Kasaudhan</span>
+        </div>
+        
+        <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+          <span style="color: var(--text-muted);">Delivery Address</span>
+          <span id="success-delivery-address" style="font-weight: 600; max-width: 320px; text-align: right;">Mankapur, Gonda, Uttar Pradesh</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 0.9rem; border-bottom: 1px dashed var(--border-color); padding-bottom: 16px;">
+          <span style="color: var(--text-muted);">Payment Mode</span>
+          <span style="font-weight: 600; text-transform: uppercase; color: var(--accent-gold);">Cash On Delivery (COD)</span>
+        </div>
+
+        <!-- Rendered lists of items -->
+        <div id="success-items-list">
+          <!-- Loaded dynamically -->
+        </div>
+
+        <div style="display: flex; justify-content: space-between; font-size: 1.15rem; font-weight: 700; border-top: 1px solid var(--border-color); padding-top: 16px;">
+          <span>Total Paid</span>
+          <span id="success-order-amount" style="color: var(--accent-gold);">₹0</span>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; gap: 12px; width: 100%; margin-top: 20px;">
+        <button class="btn btn-secondary" style="flex:1;" onclick="UI.showToast('Demo Tracking Active: Status Checked', 'success')">Track Order</button>
+        <a href="mobiles.html" class="btn btn-primary" style="flex:1;">Continue Shopping</a>
+      </div>
+
+    </div>
+
+  </main>
+{% endblock %}

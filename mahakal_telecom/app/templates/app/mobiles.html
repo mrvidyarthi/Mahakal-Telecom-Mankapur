@@ -1,0 +1,214 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}All Pre-Owned Mobiles | Mahakal Telecom Mankapur{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px;">
+    
+    <!-- Page Header description -->
+    <div style="margin-bottom: 40px; border-left: 3px solid var(--accent-gold); padding-left: 16px;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-title);">Browse Smartphones</h1>
+      <p style="color: var(--text-secondary); margin-top: 6px;">Filter and sort through our premium pre-owned devices.</p>
+    </div>
+
+    <!-- Mobile filtering quick actions bar -->
+    <div class="filter-mobile-controls" style="display: none;">
+      <button class="btn btn-secondary btn-full" id="mobile-filter-trigger">
+        <span>⚙️ Filter Mobiles</span>
+      </button>
+    </div>
+
+    <div class="shop-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start;">
+      
+      <!-- ==========================================================================
+           DESKTOP SIDEBAR FILTERS
+           ========================================================================== -->
+      <aside class="shop-sidebar" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; position: sticky; top: 100px; display: flex; flex-direction: column; gap: 24px;" aria-label="Filters Panel">
+        
+        <!-- Filter Header -->
+        <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+          <h3 style="font-size: 1.1rem; font-family: var(--font-title);">Filters</h3>
+          <button class="clear-filters-btn" style="font-size: 0.8rem; color: var(--accent-gold); font-weight: 600;">Reset All</button>
+        </div>
+
+        <!-- Filter Brand list group -->
+        <div>
+          <h4 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Brand</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Apple"> iPhone (Apple)
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Samsung"> Samsung
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="OnePlus"> OnePlus
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Motorola"> Motorola
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Vivo"> Vivo
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Oppo"> Oppo
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Realme"> Realme
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Xiaomi"> Xiaomi
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-brand-check" value="Nothing"> Nothing
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter Condition badges -->
+        <div>
+          <h4 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Condition</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-condition-check" value="Excellent"> Excellent <span style="font-size: 0.72rem; color: var(--text-muted);">(Flawless body)</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-condition-check" value="Good"> Good <span style="font-size: 0.72rem; color: var(--text-muted);">(Minor scuffs)</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-condition-check" value="Fair"> Fair <span style="font-size: 0.72rem; color: var(--text-muted);">(Visible marks)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Filter Price slider range -->
+        <div>
+          <div class="flex-between" style="margin-bottom: 10px;">
+            <h4 style="font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Max Price</h4>
+            <span class="price-slider-value" style="font-size: 0.85rem; font-weight: 700; color: var(--accent-gold);">₹80,000</span>
+          </div>
+          <input type="range" min="5000" max="80000" step="1000" value="80000" class="filter-price-slider" style="width: 100%; accent-color: var(--accent-gold); cursor: pointer;">
+          <div class="flex-between" style="font-size: 0.72rem; color: var(--text-muted); margin-top: 6px;">
+            <span>₹5,000</span>
+            <span>₹80,000+</span>
+          </div>
+        </div>
+
+        <!-- Storage Checkbox list -->
+        <div>
+          <h4 style="font-size: 0.9rem; font-weight: 700; margin-bottom: 14px; text-transform: uppercase; letter-spacing: 0.05em;">Storage</h4>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-storage-check" value="64GB"> 64 GB
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-storage-check" value="128GB"> 128 GB
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox" class="filter-storage-check" value="256GB"> 256 GB
+            </label>
+          </div>
+        </div>
+
+      </aside>
+
+      <!-- ==========================================================================
+           RIGHT SIDE: CATALOG GRID LISTINGS
+           ========================================================================== -->
+      <section style="display: flex; flex-direction: column; gap: 24px;" aria-label="Products Catalog">
+        
+        <!-- Results count & Sorting bar headers -->
+        <div class="flex-between" style="border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+          <span id="filter-results-count" style="font-size: 0.9rem; font-weight: 600; color: var(--text-secondary);">Showing all devices</span>
+          
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <span style="font-size: 0.85rem; color: var(--text-muted);">Sort By:</span>
+            <select class="filter-sort-select" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 6px 12px; font-size: 0.85rem; color: var(--text-primary); cursor: pointer; outline: none;">
+              <option value="newest">Newest Arrivals</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="deals">Best Deals First</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Dynamic Product catalog grid output (Renders dynamically via JS Filter module) -->
+        <div id="product-grid-container" class="grid-4 mobile-grid-2">
+          <!-- Fallback Skeletons -->
+          <div class="skeleton" style="height: 380px;"></div>
+          <div class="skeleton" style="height: 380px;"></div>
+          <div class="skeleton" style="height: 380px;"></div>
+          <div class="skeleton" style="height: 380px;"></div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ==========================================================================
+       MOBILE FILTER DRAWER (Bottom sheet style)
+       ========================================================================== -->
+  <div class="mobile-filter-drawer" id="mobile-filter-drawer" aria-modal="true" role="dialog">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+      <h3 style="font-size: 1.2rem; font-family: var(--font-title);">Filter & Sort</h3>
+      <button id="mobile-filter-close" style="color: var(--text-secondary); background: none;" aria-label="Close Filters">✕</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 24px;">
+      
+      <!-- Sort selection -->
+      <div>
+        <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Sort Order</h4>
+        <select class="filter-sort-select" style="width: 100%; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px; font-size: 0.9rem; color: var(--text-primary); cursor: pointer; outline: none;">
+          <option value="newest">Newest Arrivals</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="deals">Best Deals First</option>
+        </select>
+      </div>
+
+      <!-- Brands Checkboxes -->
+      <div>
+        <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Brand</h4>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.9rem;">
+          <label><input type="checkbox" class="filter-brand-check" value="Apple"> Apple iPhone</label>
+          <label><input type="checkbox" class="filter-brand-check" value="Samsung"> Samsung</label>
+          <label><input type="checkbox" class="filter-brand-check" value="OnePlus"> OnePlus</label>
+          <label><input type="checkbox" class="filter-brand-check" value="Motorola"> Motorola</label>
+          <label><input type="checkbox" class="filter-brand-check" value="Vivo"> Vivo</label>
+          <label><input type="checkbox" class="filter-brand-check" value="Oppo"> Oppo</label>
+          <label><input type="checkbox" class="filter-brand-check" value="Realme"> Realme</label>
+          <label><input type="checkbox" class="filter-brand-check" value="Xiaomi"> Xiaomi</label>
+        </div>
+      </div>
+
+      <!-- Condition badges -->
+      <div>
+        <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Condition</h4>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.9rem;">
+          <label><input type="checkbox" class="filter-condition-check" value="Excellent"> Excellent (Like New)</label>
+          <label><input type="checkbox" class="filter-condition-check" value="Good"> Good (Light Scratches)</label>
+          <label><input type="checkbox" class="filter-condition-check" value="Fair"> Fair (Visible Use Marks)</label>
+        </div>
+      </div>
+
+      <!-- Price slider -->
+      <div>
+        <div class="flex-between" style="margin-bottom: 8px;">
+          <h4 style="font-size: 0.85rem; font-weight: 700; text-transform: uppercase;">Max Price</h4>
+          <span class="price-slider-value" style="font-size: 0.9rem; font-weight: 700; color: var(--accent-gold);">₹80,000</span>
+        </div>
+        <input type="range" min="5000" max="80000" step="1000" value="80000" class="filter-price-slider" style="width: 100%; accent-color: var(--accent-gold);">
+      </div>
+
+      <!-- Draw Actions -->
+      <div style="display: flex; gap: 12px; margin-top: 10px;">
+        <button class="btn btn-secondary clear-filters-btn" style="flex:1;">Reset All</button>
+        <button class="btn btn-primary" style="flex:1;" onclick="UI.initDrawers().closeAll();">Apply Filters</button>
+      </div>
+
+    </div>
+  </div>
+{% endblock %}

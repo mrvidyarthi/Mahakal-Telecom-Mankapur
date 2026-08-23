@@ -1,0 +1,67 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}About Us - Mahakal Telecom Mankapur{% endblock %}
+{% block meta_description %}Learn about Mahakal Telecom Mankapur. We deal in certified, quality-checked, second hand and pre-owned smartphones in Gonda, Uttar Pradesh.{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px;">
+    
+    <div style="margin-bottom: 50px; border-left: 3px solid var(--accent-gold); padding-left: 16px;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-title);">About Mahakal Telecom</h1>
+      <p style="color: var(--text-secondary); margin-top: 6px;">A Trusted Mobile Store from Mankapur, Gonda.</p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px;" class="grid-2">
+      <div>
+        <h2 style="font-size: 1.75rem; margin-bottom: 20px; font-family: var(--font-title);">Our Commitment to Quality & Trust</h2>
+        <p style="font-size: 0.98rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px;">
+          At **Mahakal Telecom Mankapur**, we understand that purchasing a pre-owned or refurbished smartphone can feel risky. That is why we have made it our mission to eliminate the uncertainty. We specialize in buying and selling premium, second hand smartphones—including Apple iPhones, Samsung flagships, OnePlus, Vivo, Oppo, and Motorola devices.
+        </p>
+        <p style="font-size: 0.98rem; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px;">
+          We operate on the principles of complete transparency and customer satisfaction. When you buy from us, you get exactly what you see. We test each device across multiple checking criteria before displaying it, certifying the screen quality, sensor responsiveness, battery performance, and physical body condition.
+        </p>
+        <p style="font-size: 0.98rem; line-height: 1.8; color: var(--text-secondary);">
+          Our store is located in Mankapur, Gonda, serving customers locally with pride. We provide a 7-Days checking warranty on all phones so that you can purchase with absolute confidence.
+        </p>
+      </div>
+
+      <!-- About page visual asset mockup -->
+      <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); aspect-ratio: 1/1; padding: 40px; display: flex; align-items: center; justify-content: center;">
+        <svg viewBox="0 0 300 300" width="100%" height="100%">
+          <circle cx="150" cy="150" r="120" fill="none" stroke="%2327272a" stroke-width="2" stroke-dasharray="10, 6" opacity="0.4"/>
+          <!-- Star shape graphic for certified quality seal -->
+          <path d="M150 70 L170 120 L220 120 L180 150 L200 200 L150 170 L100 200 L120 150 L80 120 L130 120 Z" fill="none" stroke="%23d4af37" stroke-width="3" stroke-linejoin="round"/>
+          <circle cx="150" cy="142" r="16" fill="%2309090b" stroke="%23d4af37" stroke-width="2"/>
+          <text x="150" y="146" fill="%23d4af37" font-family="Outfit" font-size="12" font-weight="900" text-anchor="middle">M</text>
+          <text x="150" y="240" fill="%23fafafa" font-family="Outfit" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">MAHAKAL TELECOM</text>
+          <text x="150" y="255" fill="%2371717a" font-family="system-ui" font-size="8" text-anchor="middle">MANKAPUR • GONDA</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Core values checkboxes -->
+    <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 40px;" class="reveal-on-scroll">
+      <h2 style="font-size: 1.5rem; text-align: center; margin-bottom: 40px; font-family: var(--font-title);">Our Core Business Values</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;" class="grid-3">
+        
+        <div>
+          <h3 style="font-size: 1.1rem; color: var(--accent-gold); margin-bottom: 12px;">Complete Transparency</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">We clearly state the condition of each smartphone (Excellent, Good, Fair) and provide actual photos of any imperfections. No hidden defects.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.1rem; color: var(--accent-gold); margin-bottom: 12px;">7-Day Checking Warranty</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">Every phone sold comes with a 7-day checking warranty cover. If you encounter any functional issue within 7 days, we resolve it immediately.</p>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.1rem; color: var(--accent-gold); margin-bottom: 12px;">Fair Market Value</h3>
+          <p style="font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary);">Our prices are mapped dynamically against current pre-owned markets, ensuring you save up to 40% compared to buying brand new devices.</p>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+{% endblock %}
