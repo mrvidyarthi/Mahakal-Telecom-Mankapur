@@ -1,2 +1,0 @@
-# Mahakal Telecom Mankapur
-
