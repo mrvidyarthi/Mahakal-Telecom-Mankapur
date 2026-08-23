@@ -1,0 +1,447 @@
+/* Mahakal Telecom Mankapur - Premium 2026 E-commerce Theme */
+/* Responsive Layout overrides */
+
+/* ==========================================================================
+   LAPTOPS & TABLETS (1024px and below)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  
+  .section-padding {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+  
+  .grid-4 {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  /* Shop Layout Adjustments */
+  .shop-container {
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+  }
+}
+
+/* ==========================================================================
+   SMALL TABLETS & MOBILE PHONES (768px and below)
+   ========================================================================== */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 74px; /* Space for sticky mobile bottom nav */
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+  }
+
+  .whatsapp-float {
+    bottom: 80px !important;
+  }
+
+  #back-to-top-btn {
+    bottom: 150px !important;
+  }
+
+  /* Site Header & Navigation */
+  .site-header {
+    height: var(--header-scroll-height);
+  }
+  
+  .nav-menu {
+    display: none; /* Hide desktop nav link menu */
+  }
+  
+  .mobile-menu-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-md);
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+  }
+  
+  /* Layout adjustments */
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  
+  .grid-2 {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  /* Hero Compose Stack */
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .hero-info {
+    order: 1;
+    align-items: center;
+  }
+  
+  .hero-visual {
+    order: 2;
+    margin-top: 20px;
+  }
+  
+  .hero-trust-indicators {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  
+  /* Shop Page sidebar hiding */
+  .shop-layout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .shop-sidebar {
+    display: none; /* Hidden on mobile - using floating drawer instead */
+  }
+  
+  .filter-mobile-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  
+  /* Footer responsive stacking */
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+  
+  .footer-brand {
+    align-items: center;
+  }
+  
+  .footer-brand .footer-desc {
+    max-width: 100%;
+  }
+  
+  .footer-location {
+    justify-content: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+  
+  /* Product Detail Grid Layout & Sizing Adjustments */
+  .product-detail-layout {
+    grid-template-columns: 1fr !important; /* Ensure override of inline grid template */
+    gap: 30px;
+  }
+
+  .main-image-viewport {
+    padding: 20px;
+  }
+
+  #detail-main-img {
+    max-height: 280px;
+  }
+
+  .detail-title {
+    font-size: 1.8rem;
+  }
+
+  .specs-highlights-grid {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .specs-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-actions-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .product-card-media {
+    padding: 12px;
+  }
+  
+  .product-card-img {
+    max-height: 140px;
+  }
+  
+  /* Cart Table Stacking for mobile */
+  .cart-table thead {
+    display: none; /* Hide header labels */
+  }
+  
+  .cart-table, .cart-table tbody, .cart-table tr, .cart-table td {
+    display: block;
+    width: 100%;
+  }
+  
+  .cart-table tr {
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    background-color: var(--bg-card);
+  }
+  
+  .cart-table td {
+    text-align: right;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border-color);
+    position: relative;
+    padding-left: 50%;
+  }
+  
+  .cart-table td:last-child {
+    border-bottom: none;
+  }
+  
+  .cart-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 45%;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  
+  .cart-table td.product-cell {
+    padding-left: 0;
+    text-align: left;
+  }
+  
+  .cart-table td.product-cell::before {
+    display: none;
+  }
+  
+  .cart-product-info {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+/* ==========================================================================
+   EXTRA SMALL SMARTPHONES (480px and below)
+   ========================================================================== */
+@media (max-width: 480px) {
+  /* 2-Column Product Card Grid on Mobile for fast thumb scanning */
+  .mobile-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  /* Make product cards fit in 2-column mobile view */
+  .mobile-grid-2 .product-card-body {
+    padding: 12px;
+  }
+
+  .mobile-grid-2 .product-card-media {
+    padding: 8px;
+  }
+  
+  .mobile-grid-2 .product-card-img {
+    max-height: 110px;
+  }
+  
+  .mobile-grid-2 .product-card-title {
+    font-size: 0.9rem;
+    margin-bottom: 4px;
+    height: 38px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  .mobile-grid-2 .product-card-brand {
+    font-size: 0.65rem;
+  }
+  
+  .mobile-grid-2 .product-card-meta {
+    display: none; /* Hide secondary meta pills on mobile cards to fit space */
+  }
+  
+  .mobile-grid-2 .price-current {
+    font-size: 0.95rem;
+  }
+  
+  .mobile-grid-2 .price-original {
+    font-size: 0.75rem;
+  }
+  
+  .mobile-grid-2 .price-discount {
+    font-size: 0.6rem;
+    padding: 1px 4px;
+  }
+  
+  .mobile-grid-2 .product-card-actions {
+    flex-direction: column;
+    gap: 6px;
+  }
+  
+  .mobile-grid-2 .product-card-actions .btn {
+    padding: 8px 12px;
+    font-size: 0.78rem;
+  }
+  
+  .mobile-grid-2 .badge-condition {
+    font-size: 0.55rem;
+    padding: 2px 6px;
+    top: 10px;
+    left: 10px;
+  }
+  
+  .mobile-grid-2 .wishlist-btn {
+    width: 30px;
+    height: 30px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .mobile-grid-2 .wishlist-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  /* Category list section cards scrollable */
+  .mobile-scroll-row {
+    display: flex;
+    overflow-x: auto;
+    justify-content: flex-start !important; /* Override inline center on mobile */
+    gap: 12px;
+    padding-bottom: 12px;
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    scrollbar-width: none;
+  }
+  
+  .mobile-scroll-row::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .mobile-scroll-row .category-card {
+    flex: 0 0 110px;
+    padding: 16px 12px;
+    gap: 8px;
+  }
+  
+  .mobile-scroll-row .category-icon-bg {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .mobile-scroll-row .category-icon-bg svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .mobile-scroll-row .category-name {
+    font-size: 0.8rem;
+  }
+  
+  /* Floating elements adjustments */
+  .whatsapp-float {
+    bottom: 20px;
+    right: 20px;
+    gap: 8px;
+  }
+  
+  .whatsapp-btn {
+    width: 48px;
+    height: 48px;
+  }
+  
+  .whatsapp-btn svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .whatsapp-tooltip {
+    display: none; /* Hide tooltip on small mobile screens */
+  }
+  
+  /* Bottom modal sheet behavior for filter on mobile */
+  .mobile-filter-drawer {
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    max-height: 85vh;
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    z-index: 1000;
+    padding: 24px;
+    overflow-y: auto;
+    transition: var(--transition-smooth);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.8);
+  }
+  
+  .mobile-filter-drawer.active {
+    bottom: 0;
+  }
+  
+  /* Hero text scaling */
+  .hero-title {
+    font-size: 2.25rem !important;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ==========================================================================
+   VERY NARROW PHONES (320px - 360px viewport safety)
+   ========================================================================== */
+@media (max-width: 360px) {
+  .mobile-grid-2 {
+    grid-template-columns: 1fr; /* Single column on super narrow to avoid text squeeze */
+  }
+  
+  .hero-btns {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+  
+  .hero-btns .btn {
+    width: 100%;
+  }
+}

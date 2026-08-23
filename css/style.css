@@ -1,0 +1,227 @@
+/* Mahakal Telecom Mankapur - Premium 2026 E-commerce Theme */
+/* Base Styles & variables */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Color Palette - Premium Tech Luxury */
+  --bg-primary: #09090b;       /* Dark base (Zinc 950) */
+  --bg-secondary: #0f0f13;     /* Dark panel surface */
+  --bg-tertiary: #18181b;      /* Dark highlighted surface (Zinc 900) */
+  --bg-card: #131317;          /* Card background */
+  
+  --accent-gold: #d4af37;      /* Primary luxury accent (Metallic Gold) */
+  --accent-gold-rgb: 212, 175, 55;
+  --accent-gold-hover: #e5c158;
+  --accent-gold-glow: rgba(212, 175, 55, 0.12);
+  
+  --text-primary: #fafafa;     /* Off-White text (Zinc 50) */
+  --text-secondary: #a1a1aa;   /* Soft grey text (Zinc 400) */
+  --text-muted: #71717a;       /* Muted grey text (Zinc 500) */
+  
+  --border-color: #27272a;     /* Charcoal border (Zinc 800) */
+  --border-hover: #3f3f46;     /* Lighter border for focus/hover (Zinc 700) */
+  
+  --success-green: #2ecc71;    /* WhatsApp & Available Status */
+  --success-green-rgb: 46, 204, 113;
+  --danger-red: #ef4444;       /* Sold status badge */
+  
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-title: 'Outfit', system-ui, -apple-system, sans-serif;
+  
+  /* Layout Grid & spacing */
+  --container-max-width: 1280px;
+  --header-height: 80px;
+  --header-scroll-height: 64px;
+  
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.7);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.9);
+  --shadow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
+  
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+}
+
+/* Base resets & styles */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography elements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  background: none;
+  border: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Layout wrappers */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.section-padding {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+/* Common text helpers */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-gold { color: var(--accent-gold); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+/* Common flex grid layout helpers */
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Grid wrappers */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Screen overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 998;
+  opacity: 0;
+  pointer-events: none;
+  transition: var(--transition-smooth);
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Skip link for a11y */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--accent-gold);
+  color: var(--bg-primary);
+  font-weight: 700;
+  padding: 8px 16px;
+  z-index: 1001;
+  transition: var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+}
