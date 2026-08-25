@@ -106,25 +106,13 @@
     transform: translateY(0) scale(1) !important;
   }
 
-  /* Direction modifiers on mobile/tablet also compose with scale */
-  .reveal-from-top-right {
-    transform: translate(40px, -40px) scale(0.96);
-  }
-
-  .reveal-from-right {
-    transform: translateX(40px) scale(0.96);
-  }
-
-  .reveal-from-left {
-    transform: translateX(-40px) scale(0.96);
-  }
-
-  .reveal-from-top {
-    transform: translateY(-40px) scale(0.96);
-  }
-
+  /* Direction modifiers on mobile/tablet are overridden to all use bottom-to-top pop/scale */
+  .reveal-from-top-right,
+  .reveal-from-right,
+  .reveal-from-left,
+  .reveal-from-top,
   .reveal-from-bottom {
-    transform: translateY(40px) scale(0.96);
+    transform: translateY(40px) scale(0.96) !important;
   }
 
   /* Automatic subtle stagger delays for grids and scroll rows */

@@ -81,6 +81,46 @@
     grid-template-columns: 240px 1fr;
     gap: 24px;
   }
+
+  .shop-layout {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  
+  .shop-sidebar {
+    display: none !important;
+  }
+  
+  .filter-mobile-controls {
+    display: flex !important;
+    gap: 12px;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .filter-mobile-controls .btn {
+    width: 100%;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .filter-mobile-controls .btn:active,
+  .filter-mobile-controls .btn:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+  }
 }
 
 /* ==========================================================================
@@ -89,16 +129,7 @@
 @media (max-width: 768px) {
   /* Mobile Shop Info Strip at top of homepage */
   .mobile-shop-info-strip {
-    display: flex !important;
-    flex-direction: column;
-    gap: 8px;
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 16px;
-    margin: 80px 20px 0; /* 80px top margin to clear fixed header */
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+    display: none !important;
   }
   
   .info-strip-item {
@@ -227,47 +258,6 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 16px;
-  }
-  
-  /* Shop Page sidebar hiding */
-  .shop-layout {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .shop-sidebar {
-    display: none; /* Hidden on mobile - using floating drawer instead */
-  }
-  
-  .filter-mobile-controls {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 24px;
-    width: 100%;
-  }
-
-  .filter-mobile-controls .btn {
-    flex: 1;
-    min-height: 48px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 0.9rem;
-    font-weight: 600;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
-    background-color: var(--bg-tertiary);
-    color: var(--text-primary);
-    cursor: pointer;
-    transition: var(--transition-smooth);
-  }
-
-  .filter-mobile-controls .btn:active,
-  .filter-mobile-controls .btn:hover {
-    background-color: var(--bg-secondary);
-    border-color: var(--accent-gold);
-    color: var(--accent-gold);
   }
   
   /* Footer responsive stacking */

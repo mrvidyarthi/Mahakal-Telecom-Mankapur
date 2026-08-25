@@ -165,23 +165,6 @@ const UI = {
       mobileFilterClose.addEventListener('click', UI.closeAllDrawers);
     }
 
-    // Mobile Sort Drawer Toggling
-    const mobileSortTrigger = document.getElementById('mobile-sort-trigger');
-    const mobileSortDrawer = document.getElementById('mobile-sort-drawer');
-    const mobileSortClose = document.getElementById('mobile-sort-close');
-
-    if (mobileSortTrigger && mobileSortDrawer) {
-      mobileSortTrigger.addEventListener('click', () => {
-        mobileSortDrawer.classList.add('active');
-        overlay.classList.add('active');
-        body.style.overflow = 'hidden';
-      });
-    }
-
-    if (mobileSortClose) {
-      mobileSortClose.addEventListener('click', UI.closeAllDrawers);
-    }
-
     // Backdrop click close trigger
     overlay.addEventListener('click', UI.closeAllDrawers);
   },
