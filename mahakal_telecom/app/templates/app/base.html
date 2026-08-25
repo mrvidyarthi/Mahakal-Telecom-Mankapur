@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="{% static 'app/css/responsive.css' %}">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="/media/logo/image.png">
+  <link rel="icon" type="image/png" href="{% static 'app/logo/image.png' %}">
   {% block extra_head %}{% endblock %}
 </head>
 <body>
@@ -30,7 +30,7 @@
     <div class="container header-container">
       <!-- Logo Branding -->
       <a href="index.html" class="logo-link" aria-label="Mahakal Telecom Mankapur Home">
-        <img class="logo-img" src="/media/logo/image.png" alt="Mahakal Telecom Logo">
+        <img class="logo-img" src="{% static 'app/logo/image.png' %}" alt="Mahakal Telecom Logo">
         <div class="logo-text-wrapper">
           <span class="brand-title">MAHAKAL TELECOM</span>
           <span class="brand-subtitle">Mankapur, Gonda</span>
@@ -82,7 +82,7 @@
   <div class="mobile-nav-drawer" id="mobile-menu-drawer" aria-modal="true" role="dialog">
     <div class="drawer-header">
       <div class="drawer-logo-container">
-        <img class="drawer-logo-img" src="/media/logo/image.png" alt="Mahakal Telecom Logo">
+        <img class="drawer-logo-img" src="{% static 'app/logo/image.png' %}" alt="Mahakal Telecom Logo">
         <div class="logo-text-wrapper">
           <span class="brand-title" style="font-size: 1.1rem;">MAHAKAL TELECOM</span>
           <div class="brand-subtitle" style="font-size: 0.55rem;">Mankapur, Gonda</div>
@@ -148,7 +148,7 @@
     <div class="container footer-grid">
       <div class="footer-col-about">
         <div class="footer-logo-row" style="margin-bottom: 16px;">
-          <img src="/media/logo/image.png" alt="Mahakal Telecom Logo" style="width:36px; height:36px;">
+          <img src="{% static 'app/logo/image.png' %}" alt="Mahakal Telecom Logo" style="width:36px; height:36px;">
           <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary);">MAHAKAL TELECOM</h3>
         </div>
         <p style="color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin-bottom: 20px;">
