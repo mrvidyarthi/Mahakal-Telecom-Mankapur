@@ -26,7 +26,7 @@
          ========================================================================== -->
     <section class="hero-section" style="padding-top: 140px; padding-bottom: 80px; background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.05) 0%, rgba(9, 9, 11, 0) 60%);">
       <div class="container hero-wrapper" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center;">
-        <div class="hero-info" style="display: flex; flex-direction: column; align-items: flex-start;">
+        <div class="hero-info reveal-on-scroll" style="display: flex; flex-direction: column; align-items: flex-start;">
           
           <div style="display: inline-flex; align-items: center; gap: 8px; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); padding: 6px 14px; border-radius: var(--radius-full); margin-bottom: 24px;">
             <span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--success-green); display: block;" class="animate-pulse-green"></span>
@@ -73,71 +73,106 @@
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
               <defs>
                 <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stop-color="%23d4af37" stop-opacity="0.08"/>
-                  <stop offset="100%" stop-color="%230b0b0d" stop-opacity="0"/>
+                  <stop offset="0%" stop-color="#d4af37" stop-opacity="0.08"/>
+                  <stop offset="100%" stop-color="#0b0b0d" stop-opacity="0"/>
                 </radialGradient>
                 <linearGradient id="body" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="%2327272a"/>
-                  <stop offset="100%" stop-color="%2309090b"/>
+                  <stop offset="0%" stop-color="#27272a"/>
+                  <stop offset="100%" stop-color="#09090b"/>
                 </linearGradient>
                 <!-- Vibrant Gradients for Phone Screens -->
                 <linearGradient id="screen-gold" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="%232c1e08"/>
-                  <stop offset="50%" stop-color="%23120c03"/>
-                  <stop offset="100%" stop-color="%23080501"/>
+                  <stop offset="0%" stop-color="#2c1e08"/>
+                  <stop offset="50%" stop-color="#120c03"/>
+                  <stop offset="100%" stop-color="#080501"/>
                 </linearGradient>
-                <linearGradient id="screen-blue" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="%230f1e36"/>
-                  <stop offset="50%" stop-color="%23060c17"/>
-                  <stop offset="100%" stop-color="%23020408"/>
+                <linearGradient id="screen-gold-dark" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stop-color="#1e1405"/>
+                  <stop offset="50%" stop-color="#090601"/>
+                  <stop offset="100%" stop-color="#000000"/>
                 </linearGradient>
-                <linearGradient id="screen-purple" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stop-color="%2328103d"/>
-                  <stop offset="50%" stop-color="%2310061a"/>
-                  <stop offset="100%" stop-color="%2306020a"/>
+                <!-- Premium Gold Metallic Chassis Gradient -->
+                <linearGradient id="chassis-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fcf1d0"/>
+                  <stop offset="30%" stop-color="#d4af37"/>
+                  <stop offset="70%" stop-color="#aa8010"/>
+                  <stop offset="100%" stop-color="#5a4505"/>
                 </linearGradient>
+                <!-- Premium Gold Dark Chassis Gradient -->
+                <linearGradient id="chassis-gold-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#aa8010"/>
+                  <stop offset="50%" stop-color="#735205"/>
+                  <stop offset="100%" stop-color="#3a2c05"/>
+                </linearGradient>
+                <!-- Premium Metal Edge Highlight Gradient -->
+                <linearGradient id="metal-edge" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+                  <stop offset="50%" stop-color="#71717a" stop-opacity="0.1"/>
+                  <stop offset="100%" stop-color="#ffffff" stop-opacity="0.4"/>
+                </linearGradient>
+                <!-- Drop shadow filter for 3D depth -->
+                <filter id="phone-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000000" flood-opacity="0.65"/>
+                </filter>
               </defs>
               <!-- Decorative Circle Grid -->
-              <circle cx="250" cy="250" r="180" fill="none" stroke="%2327272a" stroke-width="1.5" stroke-dasharray="8, 6" opacity="0.3"/>
+              <circle cx="250" cy="250" r="180" fill="none" stroke="#27272a" stroke-width="1.5" stroke-dasharray="8, 6" opacity="0.3"/>
               
-              <!-- Bottom Backing Phone (Android Slate) -->
-              <g transform="translate(90, 110) rotate(-12 100 170)">
-                <rect x="0" y="0" width="140" height="280" rx="24" fill="%2318181b" stroke="%2327272a" stroke-width="4"/>
-                <rect x="6" y="6" width="128" height="268" rx="18" fill="url(%23screen-blue)"/>
-                <rect x="4" y="4" width="132" height="272" rx="20" fill="none" stroke="%233b82f6" stroke-width="1.5" stroke-opacity="0.5"/>
-                <path d="M 6 40 L 134 160 L 134 260 L 100 268 Z" fill="%23ffffff" fill-opacity="0.03"/>
-                <circle cx="70" cy="18" r="3" fill="%231a202c"/>
+              <!-- Bottom Backing Phone (Android Slate - Now Gold) -->
+              <g transform="translate(90, 110) rotate(-12 100 170)" filter="url(#phone-shadow)">
+                <!-- Outer chassis border to represent premium metal bezel edge -->
+                <rect x="-2" y="-2" width="144" height="284" rx="26" fill="url(#chassis-gold-dark)"/>
+                <rect x="0" y="0" width="140" height="280" rx="24" fill="#1a1505"/> <!-- Inner bezel -->
+                <rect x="6" y="6" width="128" height="268" rx="18" fill="url(#screen-gold-dark)"/>
+                <!-- Side metallic buttons -->
+                <rect x="-4" y="60" width="3" height="30" rx="1.5" fill="#aa8010" opacity="0.8"/>
+                <rect x="-4" y="100" width="3" height="30" rx="1.5" fill="#aa8010" opacity="0.8"/>
+                <rect x="141" y="80" width="3" height="40" rx="1.5" fill="#aa8010" opacity="0.8"/>
+                <!-- Screen glare reflection overlay -->
+                <path d="M 6 6 L 134 110 L 134 160 L 6 46 Z" fill="#ffffff" fill-opacity="0.04" />
+                <rect x="4" y="4" width="132" height="272" rx="20" fill="none" stroke="url(#metal-edge)" stroke-width="1.2" stroke-opacity="0.3"/>
+                <circle cx="70" cy="18" r="3.5" fill="#020617"/>
               </g>
 
-              <!-- Backing Phone 2 (Oppo Gold Gradient) -->
-              <g transform="translate(240, 120) rotate(15 100 170)">
-                <rect x="0" y="0" width="140" height="280" rx="24" fill="%231a1a1f" stroke="%2327272a" stroke-width="4"/>
-                <rect x="6" y="6" width="128" height="268" rx="18" fill="url(%23screen-purple)"/>
-                <rect x="4" y="4" width="132" height="272" rx="20" fill="none" stroke="%23a855f7" stroke-width="1.5" stroke-opacity="0.4"/>
-                <path d="M 6 40 L 134 160 L 134 260 L 100 268 Z" fill="%23ffffff" fill-opacity="0.03"/>
-                <circle cx="70" cy="18" r="3" fill="%231a202c"/>
+              <!-- Backing Phone 2 (Oppo Purple - Now Gold) -->
+              <g transform="translate(240, 120) rotate(15 100 170)" filter="url(#phone-shadow)">
+                <!-- Outer chassis border for gold metal edge -->
+                <rect x="-2" y="-2" width="144" height="284" rx="26" fill="url(#chassis-gold-dark)"/>
+                <rect x="0" y="0" width="140" height="280" rx="24" fill="#1a1505"/> <!-- Inner bezel -->
+                <rect x="6" y="6" width="128" height="268" rx="18" fill="url(#screen-gold-dark)"/>
+                <!-- Side buttons -->
+                <rect x="-4" y="80" width="3" height="40" rx="1.5" fill="#aa8010" opacity="0.8"/>
+                <rect x="141" y="60" width="3" height="30" rx="1.5" fill="#aa8010" opacity="0.8"/>
+                <rect x="141" y="100" width="3" height="30" rx="1.5" fill="#aa8010" opacity="0.8"/>
+                <!-- Glare -->
+                <path d="M 6 6 L 134 110 L 134 160 L 6 46 Z" fill="#ffffff" fill-opacity="0.04" />
+                <rect x="4" y="4" width="132" height="272" rx="20" fill="none" stroke="url(#metal-edge)" stroke-width="1.2" stroke-opacity="0.3"/>
+                <circle cx="70" cy="18" r="3.5" fill="#090514"/>
               </g>
 
               <!-- Central Premium Phone (iPhone Gold Front Facing Overlay) -->
-              <g transform="translate(175, 80)">
-                <!-- Drop shadow ring under main phone -->
-                <rect x="-8" y="-8" width="166" height="306" rx="30" fill="none" stroke="%23d4af37" stroke-width="1" opacity="0.15"/>
-                <!-- Body frame -->
-                <rect x="0" y="0" width="150" height="290" rx="28" fill="%231f1f23" stroke="%2327272a" stroke-width="4"/>
-                <!-- Screen glass -->
-                <rect x="6" y="6" width="138" height="278" rx="22" fill="url(%23screen-gold)"/>
-                <!-- Highlight -->
-                <path d="M 6 40 L 144 180 L 144 268 L 100 278 Z" fill="%23ffffff" fill-opacity="0.05"/>
-                <!-- Screen Border Accent -->
-                <rect x="4" y="4" width="142" height="282" rx="24" fill="none" stroke="%23d4af37" stroke-width="2" stroke-opacity="0.8"/>
+              <g transform="translate(175, 80)" filter="url(#phone-shadow)">
+                <!-- Gold outer chassis border -->
+                <rect x="-2" y="-2" width="154" height="294" rx="30" fill="url(#chassis-gold)"/>
+                <rect x="0" y="0" width="150" height="290" rx="28" fill="#1a1505"/> <!-- Inner bezel -->
+                <rect x="6" y="6" width="138" height="278" rx="22" fill="url(#screen-gold)"/>
+                <!-- Side buttons -->
+                <rect x="-4" y="60" width="3" height="20" rx="1.5" fill="#d4af37" opacity="0.8"/>
+                <rect x="-4" y="90" width="3" height="30" rx="1.5" fill="#d4af37" opacity="0.8"/>
+                <rect x="-4" y="130" width="3" height="30" rx="1.5" fill="#d4af37" opacity="0.8"/>
+                <rect x="151" y="100" width="3" height="45" rx="1.5" fill="#d4af37" opacity="0.8"/>
+                <!-- Screen glare highlight -->
+                <path d="M 6 6 L 138 120 L 138 180 L 6 50 Z" fill="#ffffff" fill-opacity="0.06"/>
+                <!-- Metallic rim inner highlight stroke -->
+                <rect x="4" y="4" width="142" height="282" rx="24" fill="none" stroke="url(#metal-edge)" stroke-width="1.5" stroke-opacity="0.4"/>
                 
                 <!-- Dynamic Island / Punch Hole -->
-                <rect x="53" y="15" width="44" height="10" rx="5" fill="%230f0f11"/>
-                <circle cx="60" cy="20" r="2.5" fill="%231a202c"/>
+                <rect x="53" y="15" width="44" height="10" rx="5" fill="#0f0f11"/>
+                <circle cx="60" cy="20" r="2.5" fill="#1a202c"/>
                 
                 <!-- Graphic Wallpaper render -->
-                <text x="75" y="130" fill="%23ffffff" font-family="Outfit" font-size="12" font-weight="900" text-anchor="middle" letter-spacing="2">MAHAKAL</text>
-                <text x="75" y="145" fill="%23d4af37" font-family="Outfit" font-size="7" font-weight="700" text-anchor="middle" letter-spacing="1">PREMIUM SELECTED</text>
+                <text x="75" y="130" fill="#ffffff" font-family="Outfit" font-size="12" font-weight="900" text-anchor="middle" letter-spacing="2">MAHAKAL</text>
+                <text x="75" y="145" fill="#d4af37" font-family="Outfit" font-size="7" font-weight="700" text-anchor="middle" letter-spacing="1">PREMIUM SELECTED</text>
               </g>
             </svg>
           </div>
@@ -152,7 +187,7 @@
       <div class="container">
         <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px;" class="grid-2">
           
-          <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="display: flex; gap: 16px; align-items: flex-start;" class="reveal-on-scroll">
             <div style="color: var(--accent-gold); font-size: 1.5rem; font-weight: 800;">✓</div>
             <div>
               <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px;">Quality Checked</h3>
@@ -160,7 +195,7 @@
             </div>
           </div>
           
-          <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="display: flex; gap: 16px; align-items: flex-start;" class="reveal-on-scroll">
             <div style="color: var(--accent-gold); font-size: 1.5rem; font-weight: 800;">📷</div>
             <div>
               <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px;">Actual Photos</h3>
@@ -168,7 +203,7 @@
             </div>
           </div>
 
-          <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="display: flex; gap: 16px; align-items: flex-start;" class="reveal-on-scroll">
             <div style="color: var(--accent-gold); font-size: 1.5rem; font-weight: 800;">🏷️</div>
             <div>
               <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px;">Transparent Pricing</h3>
@@ -176,7 +211,7 @@
             </div>
           </div>
 
-          <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="display: flex; gap: 16px; align-items: flex-start;" class="reveal-on-scroll">
             <div style="color: var(--accent-gold); font-size: 1.5rem; font-weight: 800;">🛡️</div>
             <div>
               <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px;">Checking Warranty</h3>
@@ -184,7 +219,7 @@
             </div>
           </div>
 
-          <div style="display: flex; gap: 16px; align-items: flex-start;">
+          <div style="display: flex; gap: 16px; align-items: flex-start;" class="reveal-on-scroll">
             <div style="color: var(--accent-gold); font-size: 1.5rem; font-weight: 800;">🚚</div>
             <div>
               <h3 style="font-size: 0.95rem; font-weight: 600; margin-bottom: 4px;">All India Delivery</h3>
@@ -199,12 +234,14 @@
     <!-- ==========================================================================
          SHOP BY BRAND CATEGORIES
          ========================================================================== -->
-    <section class="section-padding container">
-      <h2 style="font-size: 1.75rem; text-align: center; margin-bottom: 8px;">Shop By Brand</h2>
-      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; font-size: 0.95rem;">Curated smartphones from top brands, fully certified and restored.</p>
+    <section id="brand-categories-section" class="section-padding container">
+      <div class="reveal-on-scroll" style="text-align: center; margin-bottom: 40px;">
+        <h2 style="font-size: 1.75rem; margin-bottom: 8px;">Shop By Brand</h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Curated smartphones from top brands, fully certified and restored.</p>
+      </div>
       
       <!-- Brand horizontal category lists -->
-      <div class="mobile-scroll-row" style="display: flex; gap: 20px; justify-content: center;" id="brand-categories-list">
+      <div class="mobile-scroll-row reveal-on-scroll" style="display: flex; gap: 20px; justify-content: center;" id="brand-categories-list">
         
         <!-- Apple Category -->
         <div class="category-card" onclick="window.location.href='mobiles.html?brand=Apple'">
@@ -253,9 +290,9 @@
     <!-- ==========================================================================
          NEW ARRIVALS SECTION
          ========================================================================== -->
-    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <section id="new-arrivals-section" class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
       <div class="container">
-        <div class="flex-between" style="margin-bottom: 40px;">
+        <div class="flex-between reveal-on-scroll" style="margin-bottom: 40px;">
           <div>
             <h2 style="font-size: 1.75rem;">New Arrivals</h2>
             <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 4px;">Fresh phones. Fresh deals. Updated daily.</p>
@@ -277,25 +314,27 @@
     <!-- ==========================================================================
          WHY CHOOSE US SECTION
          ========================================================================== -->
-    <section class="section-padding container">
-      <h2 style="font-size: 1.75rem; text-align: center; margin-bottom: 8px;">Why Choose Mahakal Telecom?</h2>
-      <p style="text-align: center; color: var(--text-secondary); margin-bottom: 50px; font-size: 0.95rem;">Delivering trust, transparency and quality pre-owned smartphones to Gonda since day one.</p>
+    <section id="why-choose-section" class="section-padding container">
+      <div class="reveal-on-scroll" style="text-align: center; margin-bottom: 50px;">
+        <h2 style="font-size: 1.75rem; margin-bottom: 8px;">Why Choose Mahakal Telecom?</h2>
+        <p style="color: var(--text-secondary); font-size: 0.95rem;">Delivering trust, transparency and quality pre-owned smartphones to Gonda since day one.</p>
+      </div>
 
       <div class="grid-3">
         
-        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: var(--radius-md); text-align: center;" class="hover-glow-gold">
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: var(--radius-md); text-align: center;" class="hover-glow-gold reveal-on-scroll">
           <div style="font-size: 2.25rem; margin-bottom: 16px;">🔍</div>
           <h3 style="font-size: 1.15rem; margin-bottom: 12px;">100% Quality Checked</h3>
           <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Every smartphone undergoes a rigorous multi-point functional check covering Face ID, screen condition, speaker clarity, and battery health before we display it.</p>
         </div>
 
-        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: var(--radius-md); text-align: center;" class="hover-glow-gold">
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: var(--radius-md); text-align: center;" class="hover-glow-gold reveal-on-scroll">
           <div style="font-size: 2.25rem; margin-bottom: 16px;">📸</div>
           <h3 style="font-size: 1.15rem; margin-bottom: 12px;">See Actual Product Photos</h3>
           <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">No stock model internet photos. We display actual high-resolution photos of each phone, documenting scuffs or minor scratches transparently.</p>
         </div>
 
-        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: var(--radius-md); text-align: center;" class="hover-glow-gold">
+        <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); padding: 32px; border-radius: var(--radius-md); text-align: center;" class="hover-glow-gold reveal-on-scroll">
           <div style="font-size: 2.25rem; margin-bottom: 16px;">📍</div>
           <h3 style="font-size: 1.15rem; margin-bottom: 12px;">Physical Mankapur Store</h3>
           <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">Not a faceless internet startup. We have a physical shop in Mankapur, Gonda, Uttar Pradesh. Walk in anytime to touch, feel, inspect and try the phone in person.</p>
@@ -307,9 +346,9 @@
     <!-- ==========================================================================
          RECENTLY SOLD PROOF SECTION
          ========================================================================== -->
-    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <section id="recently-sold-section" class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
       <div class="container">
-        <div class="flex-between" style="margin-bottom: 40px;">
+        <div class="flex-between reveal-on-scroll" style="margin-bottom: 40px;">
           <div>
             <h2 style="font-size: 1.75rem;">Recently Sold</h2>
             <p style="color: var(--text-secondary); font-size: 0.95rem; margin-top: 4px;">Smartphones that found their happy owners in Mankapur & nearby areas.</p>
@@ -336,7 +375,7 @@
     <!-- ==========================================================================
          VISIT OUR PHYSICAL STORE DETAILS
          ========================================================================== -->
-    <section class="section-padding container">
+    <section id="visit-store-section" class="section-padding container">
       <div class="grid-2" style="align-items: center; gap: 50px;">
         <div class="reveal-on-scroll">
           <span style="font-size: 0.8rem; font-weight: 700; color: var(--accent-gold); text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 8px;">Physical Store Location</span>
@@ -368,32 +407,32 @@
         </div>
 
         <!-- Premium Placeholder Visual of physical shop -->
-        <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); aspect-ratio: 16/10; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); aspect-ratio: 16/10; overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;" class="reveal-on-scroll">
           <!-- SVG Mock storefront banner graphic -->
           <svg viewBox="0 0 400 250" width="100%" height="100%">
             <defs>
               <linearGradient id="shop-grad" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%" stop-color="%231a1a24"/>
-                <stop offset="100%" stop-color="%230f0f13"/>
+                <stop offset="0%" stop-color="#1a1a24"/>
+                <stop offset="100%" stop-color="#0f0f13"/>
               </linearGradient>
             </defs>
-            <rect width="100%" height="100%" fill="url(%23shop-grad)"/>
-            <path d="M0 0 L400 120 L400 250 L0 250 Z" fill="%23ffffff" fill-opacity="0.01"/>
+            <rect width="100%" height="100%" fill="url(#shop-grad)"/>
+            <path d="M0 0 L400 120 L400 250 L0 250 Z" fill="#ffffff" fill-opacity="0.01"/>
             
             <!-- Store Board -->
-            <rect x="50" y="30" width="300" height="70" rx="10" ry="10" fill="%2309090b" stroke="%23d4af37" stroke-width="2"/>
-            <text x="200" y="65" fill="%23ffffff" font-family="Outfit" font-size="16" font-weight="900" text-anchor="middle" letter-spacing="2">MAHAKAL TELECOM</text>
-            <text x="200" y="85" fill="%23d4af37" font-family="Outfit" font-size="8" font-weight="700" text-anchor="middle" letter-spacing="1">PREMIUM SMARTPHONES SHOP</text>
+            <rect x="50" y="30" width="300" height="70" rx="10" ry="10" fill="#09090b" stroke="#d4af37" stroke-width="2"/>
+            <text x="200" y="65" fill="#ffffff" font-family="Outfit" font-size="16" font-weight="900" text-anchor="middle" letter-spacing="2">MAHAKAL TELECOM</text>
+            <text x="200" y="85" fill="#d4af37" font-family="Outfit" font-size="8" font-weight="700" text-anchor="middle" letter-spacing="1">PREMIUM SMARTPHONES SHOP</text>
             
             <!-- Storefront display mockup silhouette -->
-            <rect x="70" y="140" width="50" height="90" rx="4" fill="%2318181b" stroke="%2327272a"/>
-            <rect x="130" y="130" width="60" height="100" rx="4" fill="%2318181b" stroke="%23d4af37" stroke-width="1.5"/>
-            <rect x="210" y="130" width="60" height="100" rx="4" fill="%2318181b" stroke="%2327272a"/>
-            <rect x="280" y="140" width="50" height="90" rx="4" fill="%2318181b" stroke="%2327272a"/>
+            <rect x="70" y="140" width="50" height="90" rx="4" fill="#18181b" stroke="#27272a"/>
+            <rect x="130" y="130" width="60" height="100" rx="4" fill="#18181b" stroke="#d4af37" stroke-width="1.5"/>
+            <rect x="210" y="130" width="60" height="100" rx="4" fill="#18181b" stroke="#27272a"/>
+            <rect x="280" y="140" width="50" height="90" rx="4" fill="#18181b" stroke="#27272a"/>
             
             <!-- Glass reflect grid details -->
-            <line x1="50" y1="200" x2="350" y2="200" stroke="%2327272a" stroke-width="1"/>
-            <path d="M100 230 L200 130 M220 230 L320 130" stroke="%23ffffff" stroke-width="2" opacity="0.05"/>
+            <line x1="50" y1="200" x2="350" y2="200" stroke="#27272a" stroke-width="1"/>
+            <path d="M100 230 L200 130 M220 230 L320 130" stroke="#ffffff" stroke-width="2" opacity="0.05"/>
           </svg>
         </div>
       </div>
@@ -402,33 +441,35 @@
     <!-- ==========================================================================
          INSTAGRAM SOCIAL FEED SECTION
          ========================================================================== -->
-    <section class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <section id="social-feed-section" class="section-padding" style="background-color: var(--bg-secondary); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
       <div class="container">
-        <h2 style="font-size: 1.75rem; text-align: center; margin-bottom: 8px;">Follow Our Latest Updates</h2>
-        <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; font-size: 0.95rem;">Join us on Instagram for stock drops, fresh arrivals, and customer deliveries.</p>
+        <div class="reveal-on-scroll" style="text-align: center; margin-bottom: 40px;">
+          <h2 style="font-size: 1.75rem; margin-bottom: 8px;">Follow Our Latest Updates</h2>
+          <p style="color: var(--text-secondary); font-size: 0.95rem;">Join us on Instagram for stock drops, fresh arrivals, and customer deliveries.</p>
+        </div>
 
         <!-- Instagram grid layout blocks -->
         <div class="grid-4 mobile-grid-2" style="margin-bottom: 40px;">
           
           <!-- Image block 1 -->
-          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;">
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;" class="reveal-on-scroll">
             <!-- SVG Instagram post placeholder -->
-            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="%2318181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="%2327272a" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="%2327272a" stroke-width="2"/><text x="50" y="85" fill="%2371717a" font-family="sans-serif" font-size="6" text-anchor="middle">Stock Unboxing</text></svg>
+            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="#18181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="#d4af37" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="#d4af37" stroke-width="2"/><text x="50" y="85" fill="#fafafa" font-family="sans-serif" font-size="6" text-anchor="middle">Stock Unboxing</text></svg>
           </div>
 
           <!-- Image block 2 -->
-          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;">
-            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="%2318181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="%2327272a" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="%2327272a" stroke-width="2"/><text x="50" y="85" fill="%2371717a" font-family="sans-serif" font-size="6" text-anchor="middle">Happy Customer Gonda</text></svg>
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;" class="reveal-on-scroll">
+            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="#18181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="#d4af37" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="#d4af37" stroke-width="2"/><text x="50" y="85" fill="#fafafa" font-family="sans-serif" font-size="6" text-anchor="middle">Happy Customer Gonda</text></svg>
           </div>
 
           <!-- Image block 3 -->
-          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;">
-            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="%2318181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="%2327272a" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="%2327272a" stroke-width="2"/><text x="50" y="85" fill="%2371717a" font-family="sans-serif" font-size="6" text-anchor="middle">iPhone 15 Pro Unboxing</text></svg>
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;" class="reveal-on-scroll">
+            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="#18181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="#d4af37" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="#d4af37" stroke-width="2"/><text x="50" y="85" fill="#fafafa" font-family="sans-serif" font-size="6" text-anchor="middle">iPhone 15 Pro Unboxing</text></svg>
           </div>
 
           <!-- Image block 4 -->
-          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;">
-            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="%2318181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="%2327272a" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="%2327272a" stroke-width="2"/><text x="50" y="85" fill="%2371717a" font-family="sans-serif" font-size="6" text-anchor="middle">Store Launch updates</text></svg>
+          <div style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; position: relative;" class="reveal-on-scroll">
+            <svg viewBox="0 0 100 100" width="100%" height="100%"><rect width="100%" height="100%" fill="#18181b"/><circle cx="50" cy="50" r="10" fill="none" stroke="#d4af37" stroke-width="2"/><rect x="25" y="25" width="50" height="50" rx="8" fill="none" stroke="#d4af37" stroke-width="2"/><text x="50" y="85" fill="#fafafa" font-family="sans-serif" font-size="6" text-anchor="middle">Store Launch updates</text></svg>
           </div>
 
         </div>

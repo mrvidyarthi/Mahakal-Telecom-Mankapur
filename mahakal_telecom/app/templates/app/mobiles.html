@@ -14,8 +14,11 @@
 
     <!-- Mobile filtering quick actions bar -->
     <div class="filter-mobile-controls" style="display: none;">
-      <button class="btn btn-secondary btn-full" id="mobile-filter-trigger">
-        <span>⚙️ Filter Mobiles</span>
+      <button class="btn btn-secondary" id="mobile-filter-trigger" style="flex: 1;">
+        <span>⚙️ Filter</span>
+      </button>
+      <button class="btn btn-secondary" id="mobile-sort-trigger" style="flex: 1;">
+        <span>⇅ Sort By</span>
       </button>
     </div>
 
@@ -152,23 +155,12 @@
        ========================================================================== -->
   <div class="mobile-filter-drawer" id="mobile-filter-drawer" aria-modal="true" role="dialog">
     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
-      <h3 style="font-size: 1.2rem; font-family: var(--font-title);">Filter & Sort</h3>
+      <h3 style="font-size: 1.2rem; font-family: var(--font-title);">Filter</h3>
       <button id="mobile-filter-close" style="color: var(--text-secondary); background: none;" aria-label="Close Filters">✕</button>
     </div>
 
     <div style="display: flex; flex-direction: column; gap: 24px;">
       
-      <!-- Sort selection -->
-      <div>
-        <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Sort Order</h4>
-        <select class="filter-sort-select" style="width: 100%; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px; font-size: 0.9rem; color: var(--text-primary); cursor: pointer; outline: none;">
-          <option value="newest">Newest Arrivals</option>
-          <option value="price-low">Price: Low to High</option>
-          <option value="price-high">Price: High to Low</option>
-          <option value="deals">Best Deals First</option>
-        </select>
-      </div>
-
       <!-- Brands Checkboxes -->
       <div>
         <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Brand</h4>
@@ -194,6 +186,16 @@
         </div>
       </div>
 
+      <!-- Storage Checkbox list -->
+      <div>
+        <h4 style="font-size: 0.85rem; font-weight: 700; margin-bottom: 10px; text-transform: uppercase;">Storage</h4>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; font-size: 0.9rem;">
+          <label><input type="checkbox" class="filter-storage-check" value="64GB"> 64 GB</label>
+          <label><input type="checkbox" class="filter-storage-check" value="128GB"> 128 GB</label>
+          <label><input type="checkbox" class="filter-storage-check" value="256GB"> 256 GB</label>
+        </div>
+      </div>
+
       <!-- Price slider -->
       <div>
         <div class="flex-between" style="margin-bottom: 8px;">
@@ -206,9 +208,29 @@
       <!-- Draw Actions -->
       <div style="display: flex; gap: 12px; margin-top: 10px;">
         <button class="btn btn-secondary clear-filters-btn" style="flex:1;">Reset All</button>
-        <button class="btn btn-primary" style="flex:1;" onclick="UI.initDrawers().closeAll();">Apply Filters</button>
+        <button class="btn btn-primary" style="flex:1;" onclick="UI.closeAllDrawers();">Apply Filters</button>
       </div>
 
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MOBILE SORT DRAWER (Bottom sheet style)
+       ========================================================================== -->
+  <div class="mobile-filter-drawer" id="mobile-sort-drawer" aria-modal="true" role="dialog">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; border-bottom: 1px solid var(--border-color); padding-bottom: 16px;">
+      <h3 style="font-size: 1.2rem; font-family: var(--font-title);">Sort By</h3>
+      <button id="mobile-sort-close" style="color: var(--text-secondary); background: none;" aria-label="Close Sort">✕</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+      <!-- Sort Options List -->
+      <div style="display: flex; flex-direction: column; gap: 10px;">
+        <button class="sort-option-btn" data-value="newest" style="width: 100%; text-align: left; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-tertiary); color: var(--text-primary); font-size: 0.95rem; font-weight: 500; outline: none; cursor: pointer; transition: var(--transition-smooth); min-height: 48px;">Newest Arrivals</button>
+        <button class="sort-option-btn" data-value="price-low" style="width: 100%; text-align: left; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-tertiary); color: var(--text-primary); font-size: 0.95rem; font-weight: 500; outline: none; cursor: pointer; transition: var(--transition-smooth); min-height: 48px;">Price: Low to High</button>
+        <button class="sort-option-btn" data-value="price-high" style="width: 100%; text-align: left; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-tertiary); color: var(--text-primary); font-size: 0.95rem; font-weight: 500; outline: none; cursor: pointer; transition: var(--transition-smooth); min-height: 48px;">Price: High to Low</button>
+        <button class="sort-option-btn" data-value="deals" style="width: 100%; text-align: left; padding: 14px 16px; border: 1px solid var(--border-color); border-radius: var(--radius-md); background: var(--bg-tertiary); color: var(--text-primary); font-size: 0.95rem; font-weight: 500; outline: none; cursor: pointer; transition: var(--transition-smooth); min-height: 48px;">Best Deals First</button>
+      </div>
     </div>
   </div>
 {% endblock %}

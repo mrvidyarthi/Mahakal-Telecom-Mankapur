@@ -430,9 +430,9 @@
 }
 
 .badge-fair {
-  background-color: rgba(243, 156, 18, 0.15);
-  color: #f39c12;
-  border: 1px solid rgba(243, 156, 18, 0.3);
+  background-color: rgba(170, 128, 16, 0.15);
+  color: #aa8010;
+  border: 1px solid rgba(170, 128, 16, 0.3);
 }
 
 .badge-status {

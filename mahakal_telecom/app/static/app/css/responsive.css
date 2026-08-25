@@ -9,6 +9,48 @@
    LAPTOPS & TABLETS (1024px and below)
    ========================================================================== */
 @media (max-width: 1024px) {
+  /* Homepage Section Flex Reordering for Mobile/Tablet */
+  #main-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .mobile-shop-info-strip {
+    order: 1;
+  }
+  
+  .hero-section {
+    order: 2;
+  }
+  
+  .trust-bar-section {
+    order: 3;
+  }
+  
+  #brand-categories-section {
+    order: 4;
+  }
+  
+  #new-arrivals-section {
+    order: 5;
+  }
+  
+  #recently-sold-section {
+    order: 6;
+  }
+  
+  #why-choose-section {
+    order: 7;
+  }
+  
+  #visit-store-section {
+    order: 8;
+  }
+  
+  #social-feed-section {
+    order: 9;
+  }
+
   .container {
     padding-left: 20px;
     padding-right: 20px;
@@ -201,6 +243,31 @@
     display: flex;
     gap: 12px;
     margin-bottom: 24px;
+    width: 100%;
+  }
+
+  .filter-mobile-controls .btn {
+    flex: 1;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .filter-mobile-controls .btn:active,
+  .filter-mobile-controls .btn:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
   }
   
   /* Footer responsive stacking */
@@ -491,6 +558,34 @@
   
   .mobile-filter-drawer.active {
     bottom: 0;
+  }
+
+  /* Premium Mobile Sort Drawer Options styling */
+  .sort-option-btn {
+    border: 1px solid var(--border-color) !important;
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-secondary) !important;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: left;
+    width: 100%;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+  }
+
+  .sort-option-btn:hover {
+    color: var(--text-primary) !important;
+    border-color: var(--text-muted) !important;
+  }
+
+  .sort-option-btn.active {
+    background-color: rgba(212, 175, 55, 0.08) !important;
+    border-color: var(--accent-gold) !important;
+    color: var(--accent-gold) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.15);
   }
   
   /* Hero text scaling */

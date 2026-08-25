@@ -95,36 +95,79 @@
 @media (max-width: 1024px) {
   .reveal-on-scroll {
     opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(40px) scale(0.96);
+    transition: opacity 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     will-change: transform, opacity;
   }
 
   .reveal-on-scroll.revealed {
     opacity: 1;
-    transform: translate(0, 0) !important;
+    transform: translateY(0) scale(1) !important;
   }
 
-  /* Direction modifiers */
+  /* Direction modifiers on mobile/tablet also compose with scale */
   .reveal-from-top-right {
-    transform: translate(40px, -40px);
+    transform: translate(40px, -40px) scale(0.96);
   }
 
   .reveal-from-right {
-    transform: translateX(40px);
+    transform: translateX(40px) scale(0.96);
   }
 
   .reveal-from-left {
-    transform: translateX(-40px);
+    transform: translateX(-40px) scale(0.96);
   }
 
   .reveal-from-top {
-    transform: translateY(-40px);
+    transform: translateY(-40px) scale(0.96);
   }
 
   .reveal-from-bottom {
-    transform: translateY(40px);
+    transform: translateY(40px) scale(0.96);
+  }
+
+  /* Automatic subtle stagger delays for grids and scroll rows */
+  .grid-4 > .product-card:nth-child(2n),
+  .mobile-grid-2 > .product-card:nth-child(2n),
+  #product-grid-container > .product-card:nth-child(2n),
+  #new-arrivals-grid > .product-card:nth-child(2n),
+  #recently-sold-grid > .product-card:nth-child(2n) {
+    transition-delay: 80ms;
+  }
+  
+  .grid-4 > .product-card:nth-child(3n),
+  .mobile-grid-2 > .product-card:nth-child(3n),
+  #product-grid-container > .product-card:nth-child(3n),
+  #new-arrivals-grid > .product-card:nth-child(3n),
+  #recently-sold-grid > .product-card:nth-child(3n) {
+    transition-delay: 160ms;
+  }
+
+  .grid-4 > .product-card:nth-child(4n),
+  .mobile-grid-2 > .product-card:nth-child(4n),
+  #product-grid-container > .product-card:nth-child(4n) {
+    transition-delay: 240ms;
+  }
+
+  .grid-3 > div:nth-child(2n) {
+    transition-delay: 80ms;
+  }
+  .grid-3 > div:nth-child(3n) {
+    transition-delay: 160ms;
+  }
+
+  .mobile-scroll-row > .category-card:nth-child(2n) {
+    transition-delay: 60ms;
+  }
+  .mobile-scroll-row > .category-card:nth-child(3n) {
+    transition-delay: 120ms;
+  }
+  .mobile-scroll-row > .category-card:nth-child(4n) {
+    transition-delay: 180ms;
+  }
+  .mobile-scroll-row > .category-card:nth-child(5n) {
+    transition-delay: 240ms;
   }
 }
 

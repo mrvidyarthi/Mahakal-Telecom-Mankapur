@@ -131,10 +131,13 @@ const UI = {
       body.style.overflow = 'hidden';
     };
 
-    const closeAll = () => {
+    // Publicly accessible close method
+    UI.closeAllDrawers = () => {
       if (mobileMenuDrawer) mobileMenuDrawer.classList.remove('active');
       const filterDrawer = document.getElementById('mobile-filter-drawer');
       if (filterDrawer) filterDrawer.classList.remove('active');
+      const sortDrawer = document.getElementById('mobile-sort-drawer');
+      if (sortDrawer) sortDrawer.classList.remove('active');
       overlay.classList.remove('active');
       body.style.overflow = '';
       
@@ -143,7 +146,7 @@ const UI = {
     };
 
     if (mobileMenuTrigger) mobileMenuTrigger.addEventListener('click', openMenu);
-    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeAll);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', UI.closeAllDrawers);
 
     // Mobile Filter Drawer Toggling
     const mobileFilterTrigger = document.getElementById('mobile-filter-trigger');
@@ -159,16 +162,33 @@ const UI = {
     }
 
     if (mobileFilterClose) {
-      mobileFilterClose.addEventListener('click', closeAll);
+      mobileFilterClose.addEventListener('click', UI.closeAllDrawers);
+    }
+
+    // Mobile Sort Drawer Toggling
+    const mobileSortTrigger = document.getElementById('mobile-sort-trigger');
+    const mobileSortDrawer = document.getElementById('mobile-sort-drawer');
+    const mobileSortClose = document.getElementById('mobile-sort-close');
+
+    if (mobileSortTrigger && mobileSortDrawer) {
+      mobileSortTrigger.addEventListener('click', () => {
+        mobileSortDrawer.classList.add('active');
+        overlay.classList.add('active');
+        body.style.overflow = 'hidden';
+      });
+    }
+
+    if (mobileSortClose) {
+      mobileSortClose.addEventListener('click', UI.closeAllDrawers);
     }
 
     // Backdrop click close trigger
-    overlay.addEventListener('click', closeAll);
+    overlay.addEventListener('click', UI.closeAllDrawers);
   },
 
   // Scroll reveal loading transitions
   initScrollReveal() {
-    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    const reveals = document.querySelectorAll('.reveal-on-scroll:not(.revealed)');
     if (reveals.length === 0) return;
 
     const observer = new IntersectionObserver((entries) => {

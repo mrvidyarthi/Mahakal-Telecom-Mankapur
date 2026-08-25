@@ -112,13 +112,62 @@ const Filter = {
 
     // Sort Selectors
     const sortSelects = document.querySelectorAll('.filter-sort-select');
+    const sortBtns = document.querySelectorAll('.sort-option-btn');
+
     sortSelects.forEach(select => {
       // Sync initial state
       if (this.state.sortBy) select.value = this.state.sortBy;
 
       select.addEventListener('change', (e) => {
-        this.state.sortBy = e.target.value;
+        const val = e.target.value;
+        this.state.sortBy = val;
+
+        // Sync other selects
+        sortSelects.forEach(sel => {
+          if (sel !== select) sel.value = val;
+        });
+
+        // Sync buttons
+        sortBtns.forEach(b => {
+          if (b.getAttribute('data-value') === val) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+
         this.apply();
+      });
+    });
+
+    // Mobile Sort Option Buttons Click Binding
+    sortBtns.forEach(btn => {
+      if (this.state.sortBy === btn.getAttribute('data-value')) {
+        btn.classList.add('active');
+      }
+
+      btn.addEventListener('click', () => {
+        const val = btn.getAttribute('data-value');
+        this.state.sortBy = val;
+
+        // Sync selects
+        sortSelects.forEach(select => {
+          select.value = val;
+        });
+
+        // Highlight active button
+        sortBtns.forEach(b => {
+          if (b.getAttribute('data-value') === val) {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+
+        this.apply();
+        if (typeof UI !== 'undefined' && UI.closeAllDrawers) {
+          UI.closeAllDrawers();
+        }
       });
     });
 
@@ -159,6 +208,14 @@ const Filter = {
 
     document.querySelectorAll('.filter-sort-select').forEach(select => {
       select.value = 'newest';
+    });
+
+    document.querySelectorAll('.sort-option-btn').forEach(btn => {
+      if (btn.getAttribute('data-value') === 'newest') {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
     });
 
     document.querySelectorAll('.search-input-field').forEach(input => {
