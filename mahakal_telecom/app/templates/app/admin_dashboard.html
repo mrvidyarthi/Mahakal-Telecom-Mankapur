@@ -1,0 +1,149 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Admin Dashboard - Mahakal Telecom Mankapur{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px; min-height: 80vh;">
+    
+    <!-- Dashboard Header -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; border-left: 3px solid var(--accent-gold); padding-left: 16px; flex-wrap: wrap; gap: 20px;">
+      <div>
+        <h1 style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-title);">Catalog Management</h1>
+        <p style="color: var(--text-secondary); margin-top: 6px;">Manage pre-owned smartphone listings shown on the public site.</p>
+      </div>
+      <div style="display: flex; gap: 12px; align-items: center;">
+        <a href="{% url 'admin_product_create' %}" class="btn btn-primary">Add New Product</a>
+        <a href="{% url 'admin_logout' %}" class="btn btn-secondary">Sign Out</a>
+      </div>
+    </div>
+
+    <!-- Quick Stats Cards -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px;">
+      <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); text-align: center;">
+        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600;">Total Products</span>
+        <h3 style="font-size: 2rem; color: var(--accent-gold); margin-top: 6px;">{{ total_count }}</h3>
+      </div>
+      <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); text-align: center;">
+        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600;">Available Listings</span>
+        <h3 style="font-size: 2rem; color: var(--success-green); margin-top: 6px;">{{ available_count }}</h3>
+      </div>
+      <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); padding: 20px; border-radius: var(--radius-md); text-align: center;">
+        <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); font-weight: 600;">Sold Listings</span>
+        <h3 style="font-size: 2rem; color: var(--danger-red); margin-top: 6px;">{{ sold_count }}</h3>
+      </div>
+    </div>
+
+    <!-- Filter Bar -->
+    <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 20px; margin-bottom: 30px;">
+      <form method="get" style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
+        <div style="display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 200px;">
+          <label for="q" style="font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);">Search Keyword</label>
+          <input type="text" name="q" id="q" value="{{ query }}" placeholder="Search by model, brand, color..." style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 8px 12px; color: var(--text-primary); outline: none;">
+        </div>
+        
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 150px;">
+          <label for="category" style="font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);">Category</label>
+          <select name="category" id="category" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 8px 12px; color: var(--text-primary); outline: none;">
+            <option value="">All Categories</option>
+            {% for cat in categories %}
+              <option value="{{ cat }}" {% if selected_category == cat %}selected{% endif %}>{{ cat }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 6px; min-width: 150px;">
+          <label for="availability" style="font-size: 0.78rem; font-weight: 600; color: var(--text-secondary);">Availability</label>
+          <select name="availability" id="availability" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 8px 12px; color: var(--text-primary); outline: none;">
+            <option value="">All Statuses</option>
+            <option value="available" {% if selected_availability == 'available' %}selected{% endif %}>Available</option>
+            <option value="sold" {% if selected_availability == 'sold' %}selected{% endif %}>Sold</option>
+          </select>
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button type="submit" class="btn btn-primary" style="padding: 8px 16px;">Apply Filters</button>
+          <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary" style="padding: 8px 16px;">Reset</a>
+        </div>
+      </form>
+    </div>
+
+    <!-- Products Table -->
+    <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow-x: auto; box-shadow: var(--shadow-md);">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem;">
+        <thead>
+          <tr style="border-bottom: 1px solid var(--border-color); background-color: var(--bg-tertiary); color: var(--text-secondary);">
+            <th style="padding: 16px 20px;">Image</th>
+            <th style="padding: 16px 20px;">Brand & Model</th>
+            <th style="padding: 16px 20px;">Specs</th>
+            <th style="padding: 16px 20px;">Price</th>
+            <th style="padding: 16px 20px;">Category</th>
+            <th style="padding: 16px 20px;">Status</th>
+            <th style="padding: 16px 20px; text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+            <tr style="border-bottom: 1px solid var(--border-color); transition: var(--transition-fast);" class="table-row-hover">
+              <td style="padding: 16px 20px;">
+                {% if product.images.all %}
+                  <img src="{{ product.images.all.0.image.url }}" alt="{{ product.model }}" style="width: 48px; height: 48px; object-fit: contain; border-radius: var(--radius-sm); border: 1px solid var(--border-color); background-color: var(--bg-tertiary);">
+                {% else %}
+                  <div style="width: 48px; height: 48px; background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center; color: var(--text-muted); font-size: 0.7rem;">No Image</div>
+                {% endif %}
+              </td>
+              <td style="padding: 16px 20px; font-weight: 600;">
+                <div>{{ product.brand }}</div>
+                <div style="color: var(--text-secondary); font-size: 0.78rem; font-weight: 400; margin-top: 2px;">{{ product.model }}</div>
+              </td>
+              <td style="padding: 16px 20px; color: var(--text-secondary);">
+                <div>{{ product.ram }} RAM / {{ product.storage }}</div>
+                <div style="font-size: 0.78rem; color: var(--text-muted); margin-top: 2px;">{{ product.color }} | {{ product.condition }} Cond.</div>
+              </td>
+              <td style="padding: 16px 20px; font-weight: 600;">
+                <span style="color: var(--accent-gold);">₹{{ product.price }}</span>
+                {% if product.old_price %}
+                  <span style="font-size: 0.75rem; text-decoration: line-through; color: var(--text-muted); margin-left: 6px;">₹{{ product.old_price }}</span>
+                {% endif %}
+              </td>
+              <td style="padding: 16px 20px; color: var(--text-secondary);">{{ product.category }}</td>
+              <td style="padding: 16px 20px;">
+                <form method="post" action="{% url 'admin_toggle_availability' product.slug %}" style="display: inline;">
+                  {% csrf_token %}
+                  {% if product.availability == 'available' %}
+                    <button type="submit" class="status-badge-btn" style="background-color: rgba(46, 204, 113, 0.1); border: 1px solid var(--success-green); color: var(--success-green); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: var(--transition-fast);">Available</button>
+                  {% else %}
+                    <button type="submit" class="status-badge-btn" style="background-color: rgba(239, 68, 68, 0.1); border: 1px solid var(--danger-red); color: var(--danger-red); padding: 4px 10px; border-radius: var(--radius-full); font-size: 0.75rem; font-weight: 700; cursor: pointer; transition: var(--transition-fast);">Sold</button>
+                  {% endif %}
+                </form>
+              </td>
+              <td style="padding: 16px 20px; text-align: right;">
+                <div style="display: inline-flex; gap: 8px; justify-content: flex-end;">
+                  <a href="{% url 'admin_product_update' product.slug %}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.78rem;">Edit</a>
+                  <a href="{% url 'admin_product_delete' product.slug %}" class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.78rem; background-color: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2); color: var(--danger-red);">Delete</a>
+                </div>
+              </td>
+            </tr>
+          {% empty %}
+            <tr>
+              <td colspan="7" style="padding: 40px; text-align: center; color: var(--text-secondary);">
+                No listings found matching the filters.
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <style>
+    .table-row-hover:hover {
+      background-color: var(--bg-tertiary);
+    }
+    .status-badge-btn:hover {
+      opacity: 0.8;
+      transform: translateY(-1px);
+    }
+  </style>
+{% endblock %}

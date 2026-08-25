@@ -1,6 +1,10 @@
 /* Mahakal Telecom Mankapur - Premium 2026 E-commerce Theme */
 /* Responsive Layout overrides */
 
+.mobile-shop-info-strip {
+  display: none;
+}
+
 /* ==========================================================================
    LAPTOPS & TABLETS (1024px and below)
    ========================================================================== */
@@ -41,6 +45,65 @@
    SMALL TABLETS & MOBILE PHONES (768px and below)
    ========================================================================== */
 @media (max-width: 768px) {
+  /* Mobile Shop Info Strip at top of homepage */
+  .mobile-shop-info-strip {
+    display: flex !important;
+    flex-direction: column;
+    gap: 8px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    margin: 80px 20px 0; /* 80px top margin to clear fixed header */
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  
+  .info-strip-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .info-strip-item .icon {
+    font-size: 1.1rem;
+  }
+  
+  .info-strip-item a {
+    color: var(--accent-gold);
+    text-decoration: underline;
+  }
+  
+  /* Touch target sizes */
+  .btn {
+    min-height: 44px;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Logo title scaling for small headers */
+  .brand-title {
+    font-size: 1.05rem !important;
+  }
+  
+  .brand-subtitle {
+    font-size: 0.5rem !important;
+  }
+  
+  .logo-link {
+    gap: 8px !important;
+  }
+  
+  .logo-img {
+    height: 32px !important;
+  }
+  
+  /* Reduce padding on hero section to stack nicely */
+  .hero-section {
+    padding-top: 20px !important;
+  }
+
   body {
     padding-bottom: 74px; /* Space for sticky mobile bottom nav */
   }
@@ -80,17 +143,17 @@
   
   /* Layout adjustments */
   .grid-4 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 24px;
   }
   
   .grid-3 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 24px;
   }
   
   .grid-2 {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 24px;
   }
   

@@ -1,0 +1,173 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}{% if is_edit %}Edit Product{% else %}Add Product{% endif %} - Mahakal Telecom Mankapur{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 120px; min-height: 80vh;">
+    
+    <!-- Header -->
+    <div style="margin-bottom: 40px; border-left: 3px solid var(--accent-gold); padding-left: 16px;">
+      <h1 style="font-size: 2.25rem; font-weight: 800; font-family: var(--font-title);">{% if is_edit %}Edit Product listing{% else %}Add New Product{% endif %}</h1>
+      <p style="color: var(--text-secondary); margin-top: 6px;">Fill in the product details below. Ensure all specs match the physical device.</p>
+    </div>
+
+    <!-- Form container -->
+    <div style="background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 32px; max-width: 900px; margin: 0 auto;">
+      <form method="post" enctype="multipart/form-data" style="display: flex; flex-direction: column; gap: 24px;">
+        {% csrf_token %}
+
+        <!-- Row 1: Slug, Category -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;" class="grid-2">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="slug" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Unique Slug / ID *</label>
+            <input type="text" name="slug" id="slug" required value="{{ product.slug }}" placeholder="e.g. iphone-13-blue-128" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold" {% if is_edit %}readonly style="opacity: 0.6; cursor: not-allowed;"{% endif %}>
+            <span style="font-size: 0.72rem; color: var(--text-muted);">Unique identifier used in URLs. Only alphanumeric and hyphens.</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="category" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Category *</label>
+            <select name="category" id="category" required style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+              <option value="" disabled selected>Select Category</option>
+              {% for cat in categories %}
+                <option value="{{ cat }}" {% if product.category == cat %}selected{% endif %}>{{ cat }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 2: Brand, Model -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;" class="grid-2">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="brand" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Brand *</label>
+            <input type="text" name="brand" id="brand" required value="{{ product.brand }}" placeholder="e.g. Apple" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="model" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Model Name *</label>
+            <input type="text" name="model" id="model" required value="{{ product.model }}" placeholder="e.g. iPhone 13" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+        </div>
+
+        <!-- Row 3: RAM, Storage, Color -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;" class="grid-3">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="ram" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">RAM Size *</label>
+            <input type="text" name="ram" id="ram" required value="{{ product.ram }}" placeholder="e.g. 4GB" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="storage" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Storage Size *</label>
+            <input type="text" name="storage" id="storage" required value="{{ product.storage }}" placeholder="e.g. 128GB" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="color" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Color *</label>
+            <input type="text" name="color" id="color" required value="{{ product.color }}" placeholder="e.g. Blue" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+        </div>
+
+        <!-- Row 4: Price, Old Price, Discount -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;" class="grid-3">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="price" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Price (₹) *</label>
+            <input type="number" name="price" id="price" required value="{{ product.price }}" placeholder="e.g. 29999" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="old_price" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Old Price (₹) *</label>
+            <input type="number" name="old_price" id="old_price" required value="{{ product.old_price }}" placeholder="e.g. 34999" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="discount" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Discount Amount (₹) *</label>
+            <input type="number" name="discount" id="discount" required value="{{ product.discount }}" placeholder="e.g. 5000" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+        </div>
+
+        <!-- Row 5: Condition, Battery Health, Availability -->
+        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;" class="grid-3">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="condition" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Condition *</label>
+            <select name="condition" id="condition" required style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+              <option value="Excellent" {% if product.condition == 'Excellent' %}selected{% endif %}>Excellent</option>
+              <option value="Good" {% if product.condition == 'Good' %}selected{% endif %}>Good</option>
+              <option value="Fair" {% if product.condition == 'Fair' %}selected{% endif %}>Fair</option>
+            </select>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="battery_health" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Battery Health (%)</label>
+            <input type="number" name="battery_health" id="battery_health" value="{% if product.battery_health %}{{ product.battery_health }}{% endif %}" placeholder="e.g. 89 (Leave empty if not Apple)" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="availability" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Availability Status *</label>
+            <select name="availability" id="availability" required style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+              <option value="available" {% if product.availability == 'available' %}selected{% endif %}>Available</option>
+              <option value="sold" {% if product.availability == 'sold' %}selected{% endif %}>Sold</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Row 6: Warranty, Box & Charger checks -->
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px;" class="grid-2">
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <label for="warranty" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Warranty Period *</label>
+            <input type="text" name="warranty" id="warranty" required value="{% if product.warranty %}{{ product.warranty }}{% else %}7 Days Checking Warranty{% endif %}" placeholder="e.g. 7 Days Checking Warranty" style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); outline: none;" class="hover-glow-gold">
+          </div>
+
+          <div style="display: flex; gap: 20px; align-items: center; padding-top: 25px;">
+            <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.85rem; color: var(--text-secondary);">
+              <input type="checkbox" name="box" value="true" {% if not is_edit or product.box %}checked{% endif %} style="accent-color: var(--accent-gold);">
+              Includes Brand Box
+            </label>
+            
+            <label style="display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.85rem; color: var(--text-secondary);">
+              <input type="checkbox" name="charger" value="true" {% if not is_edit or product.charger %}checked{% endif %} style="accent-color: var(--accent-gold);">
+              Includes Charger
+            </label>
+          </div>
+        </div>
+
+        <!-- Row 7: Description -->
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <label for="description" style="font-size: 0.82rem; font-weight: 600; color: var(--text-secondary);">Product Description *</label>
+          <textarea name="description" id="description" required rows="5" placeholder="Provide detailed cosmetic condition, check results, what is included, etc." style="background-color: var(--bg-tertiary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 12px 16px; color: var(--text-primary); outline: none; font-family: var(--font-sans); resize: vertical;" class="hover-glow-gold">{% if product.description %}{{ product.description }}{% endif %}</textarea>
+        </div>
+
+        <!-- Row 8: Image Upload -->
+        <div style="border: 1px dashed var(--border-color); padding: 24px; border-radius: var(--radius-md); background-color: var(--bg-tertiary);">
+          <label for="uploaded_images" style="font-size: 0.9rem; font-weight: 600; color: var(--text-primary); display: block; margin-bottom: 8px;">Product Images</label>
+          <input type="file" name="uploaded_images" id="uploaded_images" multiple accept="image/*" style="color: var(--text-secondary); font-size: 0.85rem;">
+          <p style="font-size: 0.72rem; color: var(--text-muted); margin-top: 6px;">You can upload multiple images at once. These will be added to the product listing.</p>
+
+          <!-- Listing current images if editing -->
+          {% if is_edit and product.images.all %}
+            <div style="margin-top: 20px;">
+              <span style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary); display: block; margin-bottom: 10px;">Current Images (check to delete):</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 16px;">
+                {% for img in product.images.all %}
+                  <div style="position: relative; display: flex; flex-direction: column; align-items: center; background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-sm); padding: 8px;">
+                    <img src="{{ img.image.url }}" alt="Preview" style="height: 80px; width: 80px; object-fit: contain; margin-bottom: 6px;">
+                    <label style="font-size: 0.7rem; color: var(--danger-red); display: flex; align-items: center; gap: 4px; cursor: pointer;">
+                      <input type="checkbox" name="delete_images" value="{{ img.id }}" style="accent-color: var(--danger-red);"> Delete
+                    </label>
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Buttons -->
+        <div style="display: flex; justify-content: flex-end; gap: 16px; margin-top: 20px;">
+          <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary">Cancel</a>
+          <button type="submit" class="btn btn-primary">{% if is_edit %}Save Changes{% else %}Create Listing{% endif %}</button>
+        </div>
+
+      </form>
+    </div>
+
+  </main>
+{% endblock %}

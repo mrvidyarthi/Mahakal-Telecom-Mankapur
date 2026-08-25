@@ -1,0 +1,30 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block title %}Delete Listing - Mahakal Telecom Mankapur{% endblock %}
+
+{% block content %}
+  <main id="main-content" class="section-padding container" style="padding-top: 140px; min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+    <div style="width: 100%; max-width: 500px; background-color: var(--bg-secondary); border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 40px; box-shadow: var(--shadow-lg); text-align: center;">
+      
+      <div style="color: var(--danger-red); font-size: 3rem; margin-bottom: 20px;">⚠️</div>
+      
+      <h1 style="font-size: 1.75rem; font-family: var(--font-title); font-weight: 800; margin-bottom: 12px;">Confirm Deletion</h1>
+      
+      <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; margin-bottom: 24px;">
+        Are you sure you want to permanently delete the listing for:<br>
+        <strong style="color: var(--text-primary); font-size: 1.1rem; display: block; margin-top: 8px;">{{ product.brand }} {{ product.model }} ({{ product.ram }}/{{ product.storage }})</strong>
+      </p>
+
+      <div style="background-color: rgba(239, 68, 68, 0.05); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: var(--radius-md); padding: 16px; margin-bottom: 30px; font-size: 0.82rem; color: var(--text-secondary); text-align: left;">
+        <strong>Warning:</strong> This action cannot be undone. The product will be immediately removed from the public catalog, filters, and searches.
+      </div>
+
+      <form method="post" action="{% url 'admin_product_delete' product.slug %}" style="display: flex; gap: 16px; justify-content: center;">
+        {% csrf_token %}
+        <a href="{% url 'admin_dashboard' %}" class="btn btn-secondary" style="flex: 1;">Cancel</a>
+        <button type="submit" class="btn btn-primary" style="background-color: var(--danger-red); border-color: var(--danger-red); flex: 1;">Delete Listing</button>
+      </form>
+    </div>
+  </main>
+{% endblock %}

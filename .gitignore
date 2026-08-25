@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.pyc
+db.sqlite3
+.env
+staticfiles/
+app/media/products/*
+!app/media/products/iphone12.jpg
+!app/media/products/iphone13.jpg
+!app/media/products/iphone14pro.jpg
+!app/media/products/iphone15.jpg
+!app/media/products/moto_edge.jpg
+!app/media/products/nothing_phone2.jpg
+!app/media/products/oneplus_11r.jpg
+!app/media/products/samsung_s23.jpg
+!app/media/products/vivo_v27.jpg
+!app/media/products/links.json
