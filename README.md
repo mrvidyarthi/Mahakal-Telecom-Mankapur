@@ -1,77 +1,57 @@
-# Mahakal Telecom Mankapur - Premium Pre-Owned SmartPhones Shop
+# Mahakal Telecom Mankapur - Premium Pre-Owned SmartPhones Store
 
-A state-of-the-art, responsive, dark-themed pre-owned smartphone catalog frontend build. Engineered as a highly premium, modern 2026 e-commerce interface for **Mahakal Telecom Mankapur** (Gonda, Uttar Pradesh, India).
-
----
-
-## 📁 File Structure
-
-```
-mahakal-telecom/
-├── index.html           # Homepage (Hero, Brand list, New Arrivals, Sold Proofs, Directions)
-├── mobiles.html         # Browse Catalog (Sidebar filters, mobile drawers, instant sorts)
-├── product.html         # Dynamic specifications details template (carousels, specs grid)
-├── iphone.html          # Prefiltered list page for Apple iPhones
-├── android.html         # Prefiltered list page for Android smartphones
-├── deals.html           # Daily active cuts & special discounts
-├── sold.html            # Recently sold out products catalog
-├── about.html           # Brand narrative, core transparency details
-├── contact.html         # Call/WhatsApp links, business hours & offline route map
-├── cart.html            # Shopping cart overview (localStorage quantities calculation)
-├── checkout.html        # Customer billing address inputs & COD checkout demo
-├── order-success.html   # MT invoice details & order tracking status timeline
-│
-├── css/
-│   ├── style.css        # Core resets, imports, scrollbars, global variables (palette)
-│   ├── components.css   # Buttons, cards, headers, navigation drawers, WhatsApp floats, toast alerts
-│   ├── animations.css   # Transition indicators, skeleton shimmers, scroll reveals, pulse glow
-│   └── responsive.css   # Viewport breakpoints, mobile 2-column grids, horizontal scrolls
-│
-├── js/
-│   ├── products.js      # Mock Smartphone database (20 items catalog)
-│   ├── cart.js          # Cart item managers (localStorage add/remove/limits)
-│   ├── search.js        # Autocomplete search logic
-│   ├── filter.js        # Catalog checklist calculations & dynamic phone SVG drawer
-│   ├── ui.js            # Header sticky scrolling, drawer overlays, toast popups, scroll reveal
-│   └── main.js          # Dynamic templates routing, cart grids injector, whatsapp builders
-│
-└── README.md            # Setup guidelines & configuration manual
-```
+A premium, state-of-the-art e-commerce website designed for **Mahakal Telecom Mankapur** (Gonda, Uttar Pradesh). Built with Django, this dark-themed storefront is fully optimized for speed, luxury aesthetics, and mobile responsiveness.
 
 ---
 
-## ⚙️ Configuration & Customization Guide
+## ⚡ Key Website Features
 
-### 1. Setting the WhatsApp Number & Text Templates
-Open [`js/main.js`](file:///c:/Users/KUNAL%20KASAUDHAN/Desktop/mahakal/js/main.js) and locate the `openWhatsAppChat(productId)` method:
-```javascript
-openWhatsAppChat(productId = null) {
-  const phoneNumber = "919565391070"; // Replace with store owner's real WhatsApp number (include country code)
-  ...
-}
-```
-You can modify this number to your real business line. The template dynamically compiles product models, prices, RAM/Storage, and condition filters to send pre-formatted purchase queries.
-
-### 2. Customizing the Color System (Accent Gold)
-To change the primary accent colors (e.g., brand gold), edit the CSS variables inside [`css/style.css`](file:///c:/Users/KUNAL%20KASAUDHAN/Desktop/mahakal/css/style.css):
-```css
-:root {
-  --bg-primary: #09090b;       /* Primary backdrop */
-  --accent-gold: #d4af37;      /* Change this hex value for gold accents */
-  --accent-gold-hover: #e5c158;/* Hover state gold */
-}
-```
-
-### 3. Swapping SVG Placeholders with Real Photos
-By default, if an image fails to load or isn't supplied, the catalog dynamically generates a high-end visual SVG phone mockup matching the phone's color chassis.
-To use real photos:
-1. Save product images inside `media/products/` (e.g., `iphone13.png`).
-2. Update the `images: [...]` array path inside [`js/products.js`](file:///c:/Users/KUNAL%20KASAUDHAN/Desktop/mahakal/js/products.js) to point to the saved path.
+1. **Luxury Gold Aesthetics**: Dark themes matched with gold metallic gradients, glassmorphism cards, and smooth hover effects.
+2. **Direct Shop Hero Fold**: Pushes all catalog items and Brand Categories (like Flipkart's categories list) directly above-the-fold on mobile for an immediate shopping experience.
+3. **2-Column Mobile Catalog**: Beautiful double-column layout on phones. Showcases phone details (RAM, Storage, Battery Health, and current/original prices) and stacked quick actions without layout clipping.
+4. **Combined Filter & Sort Drawer**: Consolidates sorting and filtering controls into a single drawer on mobile screens.
+5. **Interactive Route bluemap**: Includes a custom SVG vector map of Mankapur Gonda Railway Station coordinates.
+6. **WhatsApp Integration**: Sends structured purchase queries (with product name, details, and price) directly to the store manager.
 
 ---
 
-## ⚡ Key Highlights
-* **Luxury theme aesthetics**: Zinc dark palettes with polished gold tones, responsive micro-interactions, and custom icon buttons.
-* **Offline Map representation**: Native SVG blueprint layout of Mankapur (Gonda Road & Railway station coordinates) renders cleanly offline without heavy maps API.
-* **Mobile-optimized**: Collapsible filtering drawer overlays, floating WhatsApp CTAs with pulsing indicators, and quick 2-column layouts for mobile thumb navigation.
-* **Backend Ready**: Modulized JS separates product datasets from render layouts, making it trivial to integrate Django REST API, PostgreSQL databases, Razorpay gateways, or Shiprocket shipping later.
+## ⚙️ Running Locally
+
+Follow these steps to run the website on your local development machine:
+
+### 1. Install Dependencies
+Make sure you have Python installed, then install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+### 2. Run Database Migrations
+Create the local database schema:
+```bash
+python mahakal_telecom/manage.py migrate
+```
+
+### 3. Start Development Server
+Run the local server:
+```bash
+python mahakal_telecom/manage.py runserver
+```
+Visit the website at `http://127.0.0.1:8000/`.
+
+---
+
+## 🚀 Deploying to Render.com
+
+This project is fully configured and ready for deployment on **Render**:
+
+### Render Web Service Settings
+
+* **Runtime**: `Python`
+* **Build Command**: `./build.sh` (This shell script automatically installs dependencies, runs database migrations, and collects static files).
+* **Start Command**: `gunicorn --chdir mahakal_telecom mahakal_telecom.wsgi` (Uses Gunicorn to run the WSGI application).
+
+### Environment Variables on Render
+Add the following key-value pairs in the **Environment** settings tab on Render:
+* `SECRET_KEY`: *[Your custom random security key]*
+* `DEBUG`: `False`
+* `ALLOWED_HOSTS`: `your-render-subdomain.onrender.com` (Or `*` to allow all domains)
