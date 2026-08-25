@@ -10,3 +10,7 @@ python mahakal_telecom/manage.py collectstatic --no-input
 
 # Run database migrations
 python mahakal_telecom/manage.py migrate
+
+# Seed catalog products database
+python mahakal_telecom/manage.py migrate_products
+
